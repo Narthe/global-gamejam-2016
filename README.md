@@ -3,7 +3,6 @@
 
 Clement est :
 
-* [x] Un gros con
-* [x] Un gros pd
-* [ ] Un gros enfoire
+* [x] intelligent
+* [x] beau
 
