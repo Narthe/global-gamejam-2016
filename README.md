@@ -5,5 +5,5 @@ Clement est :
 
 * [x] Un gros con
 * [x] Un gros pd
-* [] Un gros enfoire
+* [ ] Un gros enfoire
 
