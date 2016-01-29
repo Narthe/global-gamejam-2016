@@ -3,28 +3,28 @@ using System.Collections;
 
 public class ScaleEffect : MonoBehaviour {
 	
-	public bool effect; // true = out, false = in
-	public float factorValue;
+	public bool Effect; // true = out, false = in
+	public float FactorValue;
 
-	private float scaleValue;
+	private float _scaleValue;
 
 	void Start () {	
-		scaleValue = transform.localScale.x;
+		_scaleValue = transform.localScale.x;
 	}
 
 	void Update () {
 		//Fade out ?
-		if(effect){
-			if(scaleValue > 0){
-				scaleValue -= factorValue;
+		if(Effect){
+			if(_scaleValue > 0){
+				_scaleValue -= FactorValue;
 			} else {
-				scaleValue = 0;
+				_scaleValue = 0;
 			}
 		} else {
-			scaleValue += factorValue;
+			_scaleValue += FactorValue;
 		}
 
 		//Gfx update
-		transform.localScale = new Vector2(scaleValue, scaleValue);
+		transform.localScale = new Vector2(_scaleValue, _scaleValue);
 	}
 }
