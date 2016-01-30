@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.EventSystems;
 using System.Collections;
 
@@ -42,7 +43,7 @@ public class MenuControl : MonoBehaviour {
 	public void Play(){
 		if(_currentMenu == "main"){
 			//Do stuff
-			Application.Quit(); //TEMP
+			SceneManager.LoadScene(1);
 		}
 	}
 
