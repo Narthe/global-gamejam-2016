@@ -5,6 +5,7 @@ namespace Assets.Scripts.Components
 {
     public class GameControllerComponent : MonoBehaviour
     {
+        public static string[] PossibleInputs = new[] { "Walk", "Hit", "Jump", "Play" };
     #region public components reference
         public StoryLineComponent StoryLineComponent;
         public MetronomeComponent MacroRegognizerComponent;
@@ -15,6 +16,7 @@ namespace Assets.Scripts.Components
         public float Curr;
         public GameObject PathController;
         private PathControllerComponent _pathControllerComponent;
+        public long TickIndex;
 
         public static GameControllerComponent Instance;
 
@@ -24,11 +26,11 @@ namespace Assets.Scripts.Components
             _pathControllerComponent = PathController.GetComponent<PathControllerComponent>();
 
             Instance = this;
-            MacroRegognizerComponent.inputCodes = new[] {"Walk","Hit"};
+            MacroRegognizerComponent.InputSequence = new[] {"Walk","Hit"};
             MacroRegognizerComponent.OnMacroOk.AddListener(() => StoryLineComponent.SetCurrentText("MACRO OK"));
         }
 	
-        // Update is called once per frame
+        // Update is called once per framet
         void Update ()
         {
             UpdateMetronome();
@@ -39,6 +41,7 @@ namespace Assets.Scripts.Components
         {
             _rateInSec = (BPMRate / 60);
             Curr = Time.time % _rateInSec / _rateInSec;
+            TickIndex = (long) (Time.time/_rateInSec);
         }
     }
 }
