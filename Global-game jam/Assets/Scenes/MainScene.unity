@@ -85,17 +85,6 @@ NavMeshSettings:
     cellSize: 0.16666667
     manualCellSize: 0
   m_NavMeshData: {fileID: 0}
---- !u!224 &591823731 stripped
-RectTransform:
-  m_PrefabParentObject: {fileID: 22483398, guid: eb0238cc03bc9a545b281c354ccde127,
-    type: 2}
-  m_PrefabInternal: {fileID: 899012090}
---- !u!114 &591823732 stripped
-MonoBehaviour:
-  m_PrefabParentObject: {fileID: 11441436, guid: eb0238cc03bc9a545b281c354ccde127,
-    type: 2}
-  m_PrefabInternal: {fileID: 899012090}
-  m_Script: {fileID: -765806418, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
 --- !u!114 &616848594 stripped
 MonoBehaviour:
   m_PrefabParentObject: {fileID: 11432764, guid: eb0238cc03bc9a545b281c354ccde127,
@@ -115,10 +104,6 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 11432764, guid: eb0238cc03bc9a545b281c354ccde127, type: 2}
-      propertyPath: inputCodes.Array.size
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 22439860, guid: eb0238cc03bc9a545b281c354ccde127, type: 2}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -195,50 +180,6 @@ Prefab:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 941072193}
-    - target: {fileID: 11432764, guid: eb0238cc03bc9a545b281c354ccde127, type: 2}
-      propertyPath: AcceptanceAreaImage
-      value: 
-      objectReference: {fileID: 591823732}
-    - target: {fileID: 22483398, guid: eb0238cc03bc9a545b281c354ccde127, type: 2}
-      propertyPath: m_AnchorMin.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 22483398, guid: eb0238cc03bc9a545b281c354ccde127, type: 2}
-      propertyPath: m_AnchorMin.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 22483398, guid: eb0238cc03bc9a545b281c354ccde127, type: 2}
-      propertyPath: m_AnchorMax.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 22483398, guid: eb0238cc03bc9a545b281c354ccde127, type: 2}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 22483398, guid: eb0238cc03bc9a545b281c354ccde127, type: 2}
-      propertyPath: m_Pivot.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 22483398, guid: eb0238cc03bc9a545b281c354ccde127, type: 2}
-      propertyPath: m_Pivot.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 22483398, guid: eb0238cc03bc9a545b281c354ccde127, type: 2}
-      propertyPath: m_SizeDelta.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 22483398, guid: eb0238cc03bc9a545b281c354ccde127, type: 2}
-      propertyPath: m_AnchoredPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 11432764, guid: eb0238cc03bc9a545b281c354ccde127, type: 2}
-      propertyPath: inputCodes.Array.data[0]
-      value: Submit
-      objectReference: {fileID: 0}
-    - target: {fileID: 11432764, guid: eb0238cc03bc9a545b281c354ccde127, type: 2}
-      propertyPath: AcceptanceArea
-      value: 0.48
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: eb0238cc03bc9a545b281c354ccde127, type: 2}
   m_IsPrefabParent: 0
@@ -342,94 +283,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startingTarget: {fileID: 0}
   delayTracking: 0
---- !u!1 &1030618683
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
-  m_Component:
-  - 224: {fileID: 1030618684}
-  - 222: {fileID: 1030618687}
-  - 114: {fileID: 1030618686}
-  - 114: {fileID: 1030618685}
-  m_Layer: 0
-  m_Name: CurrentInputPanel
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &1030618684
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1030618683}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 591823731}
-  m_RootOrder: 0
-  m_AnchorMin: {x: 0.5, y: 0}
-  m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 30, y: 0}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1030618685
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1030618683}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 1297475563, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Padding:
-    m_Left: 0
-    m_Right: 0
-    m_Top: 0
-    m_Bottom: 0
-  m_ChildAlignment: 7
-  m_Spacing: 0
-  m_ChildForceExpandWidth: 1
-  m_ChildForceExpandHeight: 0
---- !u!114 &1030618686
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1030618683}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: -765806418, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.392}
-  m_RaycastTarget: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
-      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
-  m_PreserveAspect: 0
-  m_FillCenter: 1
-  m_FillMethod: 4
-  m_FillAmount: 1
-  m_FillClockwise: 1
-  m_FillOrigin: 0
---- !u!222 &1030618687
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1030618683}
 --- !u!1 &1187534114
 GameObject:
   m_ObjectHideFlags: 0

@@ -20,6 +20,7 @@ namespace Assets.Scripts.Components.UI
         private float _timeSinceLastInput;
         private float _lastInputTime;
         private bool _wasNeutral;
+        private bool _inputOk;
 
         #endregion
 
@@ -55,12 +56,14 @@ namespace Assets.Scripts.Components.UI
             if (Mathf.Abs(Input.GetAxis("Vertical")) > 0f && _wasNeutral)
             {
                 _wasNeutral = false;
-                if (Input.GetButton(this.inputCodes[index]) == false || (index > 0 && Time.time - _lastInputTime > GameControllerComponent.Instance.BPMRate / 60f))
+                _inputOk = Input.GetButton(this.inputCodes[index]);
+
+                if (!_inputOk || (index > 0 && Time.time - _lastInputTime > GameControllerComponent.Instance.BPMRate / 60f))
                 {
                     ClearCurrentInput();
                 }
 
-                if (Input.GetButton(this.inputCodes[index]) && GameControllerComponent.Instance.Curr > .5f - AcceptanceArea/2f && GameControllerComponent.Instance.Curr < .5f + AcceptanceArea)
+                if (_inputOk && GameControllerComponent.Instance.Curr > .5f - AcceptanceArea/2f && GameControllerComponent.Instance.Curr < .5f + AcceptanceArea)
                 {
                     AddCurrentInput();
                     Debug.LogError(index);
