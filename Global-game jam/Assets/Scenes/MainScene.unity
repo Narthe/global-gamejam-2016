@@ -193,6 +193,14 @@ Prefab:
       value: 
       objectReference: {fileID: 21300000, guid: 49fd940f8fdcf8b4ab91b8769243b63a,
         type: 3}
+    - target: {fileID: 11490518, guid: eb0238cc03bc9a545b281c354ccde127, type: 2}
+      propertyPath: m_Padding.m_Top
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 11490518, guid: eb0238cc03bc9a545b281c354ccde127, type: 2}
+      propertyPath: m_Padding.m_Bottom
+      value: 5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: eb0238cc03bc9a545b281c354ccde127, type: 2}
   m_IsPrefabParent: 0
