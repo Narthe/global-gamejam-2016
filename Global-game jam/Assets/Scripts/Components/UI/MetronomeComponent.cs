@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using System.Linq;
 using Assets.Scripts.Helpers;
 using UnityEngine;
 using UnityEngine.Events;
@@ -16,7 +17,7 @@ namespace Assets.Scripts.Components.UI
 
         public UnityEvent OnMacroOk;
 
-        public string[] inputCodes;
+        public string[] InputSequence;
 
         int index = 0;
         private float _timeSinceLastInput;
@@ -35,6 +36,8 @@ namespace Assets.Scripts.Components.UI
         private long _curTick;
 
         #endregion
+
+        private static string[] _possibleInputs = new[] {"Walk", "Hit", "Jump", "Play"};
 
         // Use this for initialization
         void Start () {
@@ -61,9 +64,9 @@ namespace Assets.Scripts.Components.UI
             if (Mathf.Abs(Input.GetAxis("Vertical")) > 0f && _wasNeutral)
             {
                 _wasNeutral = false;
-                _inputOk = Input.GetButton(this.inputCodes[index]);
+                _inputOk = CheckInputIsRight();
 
-                if (!_inputOk || (index > 0 && _curTick > _lastInputTick+1))
+                if (!_inputOk || (index > 0 && _curTick > _lastInputTick+1 || _curTick == _lastInputTick))
                 {
                     ClearCurrentInput();
                 }
@@ -73,7 +76,7 @@ namespace Assets.Scripts.Components.UI
                     AddCurrentInput();
                     Debug.LogError(index);
 
-                    if (this.index >= this.inputCodes.Length)
+                    if (this.index >= this.InputSequence.Length)
                     {
                         if (OnMacroOk != null)
                             OnMacroOk.Invoke();
@@ -100,6 +103,19 @@ namespace Assets.Scripts.Components.UI
                 _wasNeutral = true;
         }
 
+        private bool CheckInputIsRight()
+        {
+            if (!Input.GetButton(InputSequence[index]))
+                return false;
+
+            foreach(string s in _possibleInputs.Where(s => s != InputSequence[index]))
+            {
+                if (Input.GetButton(s))
+                    return false;
+            }
+            return true;
+        }
+
         private void ShowSuccessEffect()
         {
             this.index = 0;
@@ -114,7 +130,7 @@ namespace Assets.Scripts.Components.UI
         private void AddCurrentInput()
         {
             InputComponent i = GuiHelper.Instanciate(InputPrefab, CurrentInputContainer).GetComponent<InputComponent>();
-            switch (inputCodes[index])
+            switch (InputSequence[index])
             {
                 case "Walk":
                     i.Image.color = Color.red;

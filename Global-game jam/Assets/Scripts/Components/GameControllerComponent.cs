@@ -21,11 +21,11 @@ namespace Assets.Scripts.Components
         void Start ()
         {
             Instance = this;
-            MacroRegognizerComponent.inputCodes = new[] {"Walk","Hit"};
+            MacroRegognizerComponent.InputSequence = new[] {"Walk","Hit"};
             MacroRegognizerComponent.OnMacroOk.AddListener(() => StoryLineComponent.SetCurrentText("MACRO OK"));
         }
 	
-        // Update is called once per frame
+        // Update is called once per framet
         void Update ()
         {
             UpdateMetronome();
