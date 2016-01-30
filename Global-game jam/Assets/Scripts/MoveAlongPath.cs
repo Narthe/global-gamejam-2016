@@ -3,7 +3,6 @@ using System.Collections;
 
 public class MoveAlongPath : MonoBehaviour
 {
-
     public Vector3[] waypoints;
     public float m_speed = 1.0f;
     private int i = 0;
@@ -23,9 +22,9 @@ public class MoveAlongPath : MonoBehaviour
         {
             i++;
             moving = true;
-            iTween.MoveTo(gameObject, iTween.Hash("position", waypoints[i], "speed", m_speed, "easetype", iTween.EaseType.easeInOutCirc, "oncompletetarget", gameObject, "oncomplete", "Done"));
+            iTween.MoveTo(gameObject, iTween.Hash("position", waypoints[i], "speed", m_speed, "easetype", iTween.EaseType.linear, "oncompletetarget", gameObject, "oncomplete", "Done"));
         }
-
+ 
     }
 
     public void Done()

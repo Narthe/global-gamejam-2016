@@ -272,7 +272,7 @@ GameObject:
   - 23: {fileID: 1006343696}
   - 114: {fileID: 1006343695}
   m_Layer: 0
-  m_Name: Cube
+  m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -344,7 +344,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1006343694}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -13.1, y: -3.7, z: 0}
+  m_LocalPosition: {x: -13.95, y: -6.73, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -373,23 +373,19 @@ MonoBehaviour:
   m_GameObject: {fileID: 1116090954}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 01bffa8aa898b437183cd5617f7b5303, type: 3}
+  m_Script: {fileID: 11500000, guid: a829fc45b92e47d4f8b91a58450697e5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pathName: path
-  pathColor: {r: 1, g: 0, b: 0.8896551, a: 1}
+  pathName: PlayerPath
+  pathColor: {r: 0, g: 1, b: 1, a: 1}
   nodes:
-  - {x: -15.4513645, y: -3.3099458, z: 0}
-  - {x: -13.620439, y: 4.3625975, z: 0}
-  - {x: -11.542379, y: -2.960871, z: 0}
-  - {x: -8.83243, y: 4.1652937, z: 0}
-  - {x: -8.48114, y: -2.107739, z: 0}
-  - {x: -4.6169515, y: 2.208108, z: 0}
-  - {x: -4.71732, y: -4.71732, z: 0}
-  - {x: 0.30110404, y: 1.505527, z: 0}
-  - {x: 5.0686083, y: -4.5165825, z: 0}
-  - {x: 10.187404, y: 1.405159, z: 0}
-  nodeCount: 10
+  - {x: -13.899703, y: -6.6781387, z: 0}
+  - {x: -15.205853, y: -0.4659233, z: 0}
+  - {x: -6.367529, y: 1.8636646, z: 0}
+  - {x: 4.193288, y: -2.7954865, z: 0}
+  - {x: 12.812749, y: 0.6212387, z: 0}
+  - {x: 3.339076, y: 7.221693, z: 0}
+  nodeCount: 6
   initialized: 1
   initialName: New Path 1
   pathVisible: 1
