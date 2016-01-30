@@ -1,15 +1,26 @@
 ﻿using UnityEngine;
-using System.Collections;
+using UnityEngine.UI;
 
-public class StoryLineComponent : MonoBehaviour {
+namespace Assets.Scripts.Components.UI
+{
+    [RequireComponent(typeof(Text))]
+    public class StoryLineComponent : MonoBehaviour
+    {
+        private Text _text;
+        // Use this for initialization
+        void Start ()
+        {
+            _text = GetComponent<Text>();
+        }
+	
+        // Update is called once per frame
+        void Update () {
+	
+        }
 
-	// Use this for initialization
-	void Start () {
-	
-	}
-	
-	// Update is called once per frame
-	void Update () {
-	
-	}
+        public void SetCurrentText(string text)
+        {
+            _text.text = text;
+        }
+    }
 }

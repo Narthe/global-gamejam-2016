@@ -1,9 +1,14 @@
-﻿using UnityEngine;
+﻿using Assets.Scripts.Components.UI;
+using UnityEngine;
 
 namespace Assets.Scripts.Components
 {
     public class GameControllerComponent : MonoBehaviour
     {
+    #region public components reference
+        public StoryLineComponent StoryLineComponent;
+    #endregion
+
         private float _rateInSec;
         public int BPMRate = 110;
         public float Curr;
