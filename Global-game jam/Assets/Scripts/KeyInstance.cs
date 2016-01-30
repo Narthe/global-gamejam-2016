@@ -54,24 +54,21 @@ public class KeyInstance : MonoBehaviour {
 				Manager.Fail();
 			}
 			Destroy(gameObject);
-		}
-		if(Input.GetAxis("Vertical") < 0){
+		} else if(Input.GetAxis("Vertical") < 0){
 			if(Name == "down"){
 				Manager.Scored();
 			} else {
 				Manager.Fail();
 			}
 			Destroy(gameObject);
-		}
-		if(Input.GetAxis("Horizontal") < 0){
+		} else if(Input.GetAxis("Horizontal") < 0){
 			if(Name == "left"){
 				Manager.Scored();
 			} else {
 				Manager.Fail();
 			}
 			Destroy(gameObject);
-		}
-		if(Input.GetAxis("Horizontal") > 0){
+		} else if(Input.GetAxis("Horizontal") > 0){
 			if(Name == "right"){
 				Manager.Scored();
 			} else {

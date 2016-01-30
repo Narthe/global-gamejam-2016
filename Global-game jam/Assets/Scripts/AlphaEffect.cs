@@ -32,7 +32,7 @@ public class AlphaEffect : MonoBehaviour {
 			if(_alphaValue < 1){
 				_alphaValue += FactorValue * Time.deltaTime;
 			} else {
-				Destroy(gameObject);
+				_alphaValue = 1;
 			}
 		}
 
