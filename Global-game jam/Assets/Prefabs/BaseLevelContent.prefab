@@ -173,22 +173,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!1 &152936
-GameObject:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 4
-  m_Component:
-  - 4: {fileID: 418320}
-  - 114: {fileID: 11431406}
-  m_Layer: 0
-  m_Name: Start
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
 --- !u!1 &158730
 GameObject:
   m_ObjectHideFlags: 1
@@ -268,18 +252,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 438140}
   m_RootOrder: 2
---- !u!4 &418320
-Transform:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 152936}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -13.1, y: -3.6999998, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 459432}
-  m_RootOrder: 0
 --- !u!4 &438140
 Transform:
   m_ObjectHideFlags: 1
@@ -306,8 +278,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 418320}
+  m_Children: []
   m_Father: {fileID: 499960}
   m_RootOrder: 0
 --- !u!4 &493442
@@ -424,7 +395,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CheckPoint: {fileID: 166252, guid: 513dbf2f1bb84434ba3e1241bb6778b5, type: 2}
-  CheckPointList: []
+  CheckPointList:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   CheckPointsContainer: {fileID: 158730}
   m_speed: 20
   ITweenPath: {fileID: 11494730}
@@ -536,23 +513,6 @@ MonoBehaviour:
   m_FillAmount: 0.61
   m_FillClockwise: 1
   m_FillOrigin: 0
---- !u!114 &11431406
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 152936}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fca94351acab8eb4b9a9cf14172e9a88, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  InputsSequences:
-  - Walk
-  - Walk
-  StartMessage: 
-  SucessMessage: The girl with shamisen was walking along a path toward the north
-    altar...
 --- !u!114 &11439656
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -712,11 +672,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   StoryLineComponent: {fileID: 11461080}
-  MetronomeComponent: {fileID: 11400870}
+  MacroRegognizerComponent: {fileID: 0}
   BPMRate: 70
   Curr: 0
-  PathController: {fileID: 146308}
   TickIndex: 0
+  PathController: {fileID: 146308}
 --- !u!114 &11494730
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -731,9 +691,13 @@ MonoBehaviour:
   pathName: Path
   pathColor: {r: 0, g: 1, b: 1, a: 1}
   nodes:
-  - {x: -16.350775, y: -3.684349, z: 0}
-  - {x: -14.225224, y: 0.37008476, z: 0}
-  nodeCount: 2
+  - {x: -26.2, y: -6.5699997, z: 0}
+  - {x: -15.5, y: -0.5699997, z: 0}
+  - {x: -11.6, y: -10.87, z: 0}
+  - {x: -4.9000006, y: -6.5699997, z: 0}
+  - {x: 1, y: 2.83, z: 0}
+  - {x: 4.299999, y: -9.27, z: 0}
+  nodeCount: 6
   initialized: 1
   initialName: New Path 2
   pathVisible: 1
