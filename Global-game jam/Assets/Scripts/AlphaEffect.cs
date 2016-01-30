@@ -24,13 +24,13 @@ public class AlphaEffect : MonoBehaviour {
 		//Fade out ?
 		if(Effect){
 			if(_alphaValue > 0){
-				_alphaValue -= FactorValue;
+				_alphaValue -= FactorValue * Time.deltaTime;
 			} else {
 				Destroy(gameObject);
 			}
 		} else {
 			if(_alphaValue < 1){
-				_alphaValue += FactorValue;
+				_alphaValue += FactorValue * Time.deltaTime;
 			} else {
 				Destroy(gameObject);
 			}

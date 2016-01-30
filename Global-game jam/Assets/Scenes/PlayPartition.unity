@@ -199,13 +199,6 @@ MonoBehaviour:
   - {fileID: 1881970004}
   - {fileID: 1004135537}
   - {fileID: 1702925152}
-  - {fileID: 1656493143}
-  - {fileID: 1636720058}
-  - {fileID: 195784641}
-  - {fileID: 746029596}
-  - {fileID: 367416249}
-  - {fileID: 101757994}
-  - {fileID: 841686176}
   KeyTemoin: {fileID: 353836075}
 --- !u!4 &215679772
 Transform:
