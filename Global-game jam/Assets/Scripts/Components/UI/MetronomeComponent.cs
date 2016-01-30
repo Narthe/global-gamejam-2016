@@ -29,6 +29,7 @@ namespace Assets.Scripts.Components.UI
         public float AcceptanceArea = .2f;
         public Image AcceptanceAreaImage;
         public GameObject CurrentInputContainer;
+        public GameObject InputPrefab;
 
 #endregion
 
@@ -98,6 +99,7 @@ namespace Assets.Scripts.Components.UI
         private void AddCurrentInput()
         {
             this.index++;
+
         }
     }
 }
