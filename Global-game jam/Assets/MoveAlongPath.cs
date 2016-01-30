@@ -23,7 +23,7 @@ public class MoveAlongPath : MonoBehaviour
         {
             i++;
             moving = true;
-            iTween.MoveTo(gameObject, iTween.Hash("position", waypoints[i], "speed", m_speed, "easetype", "linear", "oncompletetarget", gameObject, "oncomplete", "Done"));
+            iTween.MoveTo(gameObject, iTween.Hash("position", waypoints[i], "speed", m_speed, "easetype", iTween.EaseType.easeInOutCirc, "oncompletetarget", gameObject, "oncomplete", "Done"));
         }
 
     }
