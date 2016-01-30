@@ -139,8 +139,8 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Sprite: {fileID: 21300000, guid: 49fd940f8fdcf8b4ab91b8769243b63a, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -184,10 +184,10 @@ RectTransform:
   m_Father: {fileID: 458524253}
   m_RootOrder: 0
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 4, y: 200}
-  m_Pivot: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &616848592
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -200,19 +200,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 1}
+  m_Color: {r: 0, g: 0, b: 0, a: 0.297}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Sprite: {fileID: 21300000, guid: 49fd940f8fdcf8b4ab91b8769243b63a, type: 3}
+  m_Type: 3
   m_PreserveAspect: 0
   m_FillCenter: 1
-  m_FillMethod: 4
-  m_FillAmount: 1
+  m_FillMethod: 0
+  m_FillAmount: 0.61
   m_FillClockwise: 1
   m_FillOrigin: 0
 --- !u!222 &616848593
@@ -233,8 +233,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Target: {fileID: 616848592}
-  Rate: 110
-  Curr: 0
 --- !u!1 &787170457
 GameObject:
   m_ObjectHideFlags: 0
@@ -245,6 +243,7 @@ GameObject:
   - 224: {fileID: 787170458}
   - 222: {fileID: 787170460}
   - 114: {fileID: 787170459}
+  - 114: {fileID: 787170461}
   m_Layer: 0
   m_Name: Text
   m_TagString: Untagged
@@ -308,6 +307,17 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 787170457}
+--- !u!114 &787170461
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 787170457}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f327534e73d91f44bba25a7fc3da208, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &941072189
 GameObject:
   m_ObjectHideFlags: 0
@@ -478,6 +488,8 @@ GameObject:
   m_Component:
   - 224: {fileID: 1316820984}
   - 114: {fileID: 1316820983}
+  - 114: {fileID: 1316820986}
+  - 114: {fileID: 1316820985}
   m_Layer: 0
   m_Name: GameController
   m_TagString: Untagged
@@ -496,6 +508,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f5082784dd9b7f749bed07ffa8d0f4f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  StoryLineComponent: {fileID: 787170461}
+  MacroRegognizerComponent: {fileID: 1316820985}
+  BPMRate: 110
+  Curr: 0
 --- !u!224 &1316820984
 RectTransform:
   m_ObjectHideFlags: 0
@@ -513,6 +529,38 @@ RectTransform:
   m_AnchoredPosition: {x: -21.783602, y: 60.000004}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1316820985
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1316820982}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 64a47e2941053c842a2874d866e02c24, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timeKey: 0
+  timeCode: 0
+  OnMacroOk:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  inputCodes: []
+--- !u!114 &1316820986
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1316820982}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: feb650a212db353409139c6ae8cedf11, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  effect: 0
+  factorValue: 0
 --- !u!1 &1725165620
 GameObject:
   m_ObjectHideFlags: 0
@@ -615,7 +663,6 @@ GameObject:
   - 224: {fileID: 1935251314}
   - 222: {fileID: 1935251316}
   - 114: {fileID: 1935251315}
-  - 114: {fileID: 1935251317}
   m_Layer: 0
   m_Name: TextZone
   m_TagString: Untagged
@@ -660,8 +707,8 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Sprite: {fileID: 21300000, guid: 27eb728fe88e67f4e8171b956c27e0af, type: 3}
+  m_Type: 2
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -674,14 +721,3 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1935251313}
---- !u!114 &1935251317
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1935251313}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9f327534e73d91f44bba25a7fc3da208, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 

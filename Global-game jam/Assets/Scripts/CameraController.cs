@@ -35,14 +35,16 @@ namespace Assets.Scripts
 	
         // Update is called once per frame
         void Update () {
+            if (target != null)
+            {
+                //Define new position
+                xPos = target.position.x;
+                yPos = target.position.y;
 
-            //Define new position
-            xPos = target.position.x;
-            yPos = target.position.y;
-           
-            Vector3 newPosition = new Vector3(xPos, yPos, zPos);
+                Vector3 newPosition = new Vector3(xPos, yPos, zPos);
 
-            transform.position = Vector3.Lerp(transform.position, newPosition, Time.deltaTime * delayTracking);
+                transform.position = Vector3.Lerp(transform.position, newPosition, Time.deltaTime*delayTracking);
+            }
 
             UpdateCamera();
         }

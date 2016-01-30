@@ -7,6 +7,7 @@ namespace Assets.Scripts.Components
     {
     #region public components reference
         public StoryLineComponent StoryLineComponent;
+        public MacroRecognizerComponent MacroRegognizerComponent;
     #endregion
 
         private float _rateInSec;
@@ -19,10 +20,19 @@ namespace Assets.Scripts.Components
         void Start ()
         {
             Instance = this;
+            MacroRegognizerComponent.inputCodes = new[] {"Submit","Cancel"};
+            MacroRegognizerComponent.OnMacroOk.AddListener(() => StoryLineComponent.SetCurrentText("MACRO OK"));
         }
 	
         // Update is called once per frame
-        void Update () {
+        void Update ()
+        {
+            UpdateMetronome();
+
+        }
+
+        private void UpdateMetronome()
+        {
             _rateInSec = (BPMRate / 60);
             Curr = Time.time % _rateInSec / _rateInSec;
         }
