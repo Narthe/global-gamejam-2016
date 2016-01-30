@@ -58,4 +58,8 @@ public class KeyManager : MonoBehaviour {
 		Instantiate(Resources.Load("KeySuccess"), KeyTemoin.position, Quaternion.identity);
 		_score ++;
 	}
+
+	public void Fail(){
+		Instantiate(Resources.Load("KeyFail"), KeyTemoin.position, Quaternion.identity);
+	}
 }

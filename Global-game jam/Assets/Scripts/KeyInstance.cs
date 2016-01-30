@@ -47,20 +47,36 @@ public class KeyInstance : MonoBehaviour {
 	}
 
 	void OnTriggerStay2D(Collider2D hit){
-		if(Input.GetKey(KeyCode.UpArrow) && Name == "up"){
-			Manager.Scored();
+		if(Input.GetKey(KeyCode.UpArrow)){
+			if(Name == "up"){
+				Manager.Scored();
+			} else {
+				Manager.Fail();
+			}
 			Destroy(gameObject);
 		}
-		if(Input.GetKey(KeyCode.DownArrow) && Name == "down"){
-			Manager.Scored();
+		if(Input.GetKey(KeyCode.DownArrow)){
+			if(Name == "down"){
+				Manager.Scored();
+			} else {
+				Manager.Fail();
+			}
 			Destroy(gameObject);
 		}
-		if(Input.GetKey(KeyCode.LeftArrow) && Name == "left"){
-			Manager.Scored();
+		if(Input.GetKey(KeyCode.LeftArrow)){
+			if(Name == "left"){
+				Manager.Scored();
+			} else {
+				Manager.Fail();
+			}
 			Destroy(gameObject);
 		}
-		if(Input.GetKey(KeyCode.RightArrow) && Name == "right"){
-			Manager.Scored();
+		if(Input.GetKey(KeyCode.RightArrow)){
+			if(Name == "right"){
+				Manager.Scored();
+			} else {
+				Manager.Fail();
+			}
 			Destroy(gameObject);
 		}
 	}
