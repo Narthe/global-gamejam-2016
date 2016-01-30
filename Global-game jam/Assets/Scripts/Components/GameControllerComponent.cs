@@ -25,8 +25,6 @@ namespace Assets.Scripts.Components
         void Start()
         {
             _pathControllerComponent = PathController.GetComponent<PathControllerComponent>();
-            MacroRegognizerComponent.OnMacroOk.AddListener(GotoNextCheckpoint);
-
             Instance = this;
             UpdateSequence();
         }
@@ -69,6 +67,17 @@ namespace Assets.Scripts.Components
                 case OnFailure.Backtrack:
                     MacroRegognizerComponent.OnMacroFailed = new UnityEvent();
                     MacroRegognizerComponent.OnMacroFailed.AddListener(GotoPreviousCheckpoint);
+                    break;
+            }
+            MacroRegognizerComponent.OnMacroOk.AddListener(GotoNextCheckpoint);
+            switch (ch.OnSucess)
+            {
+                case OnSuccess.GotoNextNode:
+                    MacroRegognizerComponent.OnMacroOk = new UnityEvent();
+                    MacroRegognizerComponent.OnMacroOk.AddListener(GotoNextCheckpoint);
+                    break;
+                case OnSuccess.MusicMiniGame:
+                    //TODO
                     break;
             }
         }

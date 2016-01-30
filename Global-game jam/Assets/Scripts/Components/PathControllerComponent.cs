@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using Assets.Scripts.Helpers;
 using UnityEngine;
 
@@ -58,7 +59,10 @@ namespace Assets.Scripts.Components
 
         public CheckPointControllerComponent GetCurrentCheckPoint()
         {
-            return CheckPointList[_checkpointIndex].GetComponent<CheckPointControllerComponent>();
+            if(CheckPointList!=null && CheckPointList.Any() )
+                return CheckPointList[_checkpointIndex].GetComponent<CheckPointControllerComponent>();
+
+            return null;
         }
 
         void Update ()

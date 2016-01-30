@@ -71,10 +71,30 @@ public class KeyManager : MonoBehaviour {
 		return _success;
 	}
 
-	public void Scored(){
+	public void Scored(string name){
 		Instantiate(Resources.Load("KeySuccess"), KeyTemoin.position, Quaternion.identity);
-		Instantiate(Resources.Load("RitualSuccessKeySound"));
-		_score ++;
+		GameObject g = Instantiate(Resources.Load("RitualSuccessKeySound")) as GameObject;
+	    float pitchValue = 0f;
+        switch (name)
+	    {
+            case "Left":
+	            pitchValue = .5f;
+                break;
+            case "Right":
+                pitchValue = -.5f;
+                break;
+            case "Up":
+                pitchValue = 1f;
+                break;
+            case "Down":
+                pitchValue = -1f;
+                break;
+
+
+        }
+	    g.GetComponent<AudioSource>().pitch += pitchValue;
+
+        _score ++;
 	}
 
 	public void Fail(){

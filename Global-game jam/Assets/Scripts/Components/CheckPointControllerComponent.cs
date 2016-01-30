@@ -11,6 +11,7 @@ namespace Assets.Scripts.Components
         public int BPM = 110;
         public float AcceptanceArea = .3f;
         public OnFailure OnFailure;
+        public OnSuccess OnSucess;
 
         void Start ()
         {
@@ -29,11 +30,18 @@ namespace Assets.Scripts.Components
         Backtrack
     }
 
+    public enum OnSuccess
+    {
+        GotoNextNode,
+        MusicMiniGame
+    }
+
     public enum CharacterAction
     {
         Walk,
         Jump,
         Play,
-        Hit
+        Hit,
+        Idle
     }
 }

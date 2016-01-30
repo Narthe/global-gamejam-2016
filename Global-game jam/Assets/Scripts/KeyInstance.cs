@@ -49,28 +49,28 @@ public class KeyInstance : MonoBehaviour {
 	void OnTriggerStay2D(Collider2D hit){
 		if(Input.GetAxis("Vertical") > 0){
 			if(Name == "up"){
-				Manager.Scored();
+				Manager.Scored(Name);
 			} else {
 				Manager.Fail();
 			}
 			Destroy(gameObject);
 		} else if(Input.GetAxis("Vertical") < 0){
 			if(Name == "down"){
-				Manager.Scored();
+				Manager.Scored(Name);
 			} else {
 				Manager.Fail();
 			}
 			Destroy(gameObject);
 		} else if(Input.GetAxis("Horizontal") < 0){
 			if(Name == "left"){
-				Manager.Scored();
+				Manager.Scored(Name);
 			} else {
 				Manager.Fail();
 			}
 			Destroy(gameObject);
 		} else if(Input.GetAxis("Horizontal") > 0){
 			if(Name == "right"){
-				Manager.Scored();
+				Manager.Scored(Name);
 			} else {
 				Manager.Fail();
 			}

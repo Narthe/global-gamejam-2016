@@ -37,6 +37,14 @@ namespace Assets.Scripts.Components.UI
         public GameObject InputPrefab;
         private long _curTick;
 
+        public Sprite XboxButtonsA;
+
+        public Sprite XboxButtonsY;
+
+        public Sprite XboxButtonsX;
+
+        public Sprite XboxButtonsB;
+
         #endregion
 
         // Use this for initialization
@@ -97,7 +105,7 @@ namespace Assets.Scripts.Components.UI
                 }
                 else
                 {
-                    ClearCurrentInput();
+                    ClearCurrentInput(false);
                 }
                 _lastInputTick = GameControllerComponent.Instance.TickIndex;
             }
@@ -132,9 +140,11 @@ namespace Assets.Scripts.Components.UI
             this.index = 0;
         }
 
-        private void ClearCurrentInput()
+        private void ClearCurrentInput(bool refreshState = true)
         {
             CurrentInputContainer.ClearChilds();
+            if(refreshState)
+                PlayerControllerComponent.Instance.SetState(CharacterAction.Idle);
             this.index = 0;
         }
 
@@ -142,6 +152,7 @@ namespace Assets.Scripts.Components.UI
         {
             InputComponent i = GuiHelper.Instanciate(InputPrefab, CurrentInputContainer).GetComponent<InputComponent>();
             i.Image.sprite = GetTextureFromAction(InputSequence[index]);
+            PlayerControllerComponent.Instance.SetState(InputSequence[index]);
             this.index++;
 
         }
@@ -177,13 +188,5 @@ namespace Assets.Scripts.Components.UI
             }
             return null;
         }
-
-        public Sprite XboxButtonsA;
-
-        public Sprite XboxButtonsY;
-
-        public Sprite XboxButtonsX;
-
-        public Sprite XboxButtonsB;
     }
 }
