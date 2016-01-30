@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using Assets.Scripts.Helpers;
 using UnityEngine;
 
@@ -13,6 +14,8 @@ namespace Assets.Scripts.Components
         public iTweenPath ITweenPath;
         private int _checkpointIndex;
 
+        private Action _gotoNextFallBack;
+
         public GameObject Target;
 
         private bool _moving = false;
@@ -25,9 +28,8 @@ namespace Assets.Scripts.Components
             
         }
 	
-        public void GotoNextWaypoint()
+        public void GotoNextWaypoint(Action onDone)
         {
-            _checkpointIndex++;
             if (!_moving && _checkpointIndex < ITweenPath.nodes.Count - 1)
             {
                 _checkpointIndex++;
@@ -35,12 +37,22 @@ namespace Assets.Scripts.Components
                 iTween.MoveTo(Target, iTween.Hash("position", ITweenPath.nodes[_checkpointIndex], "speed", m_speed,
                                                       "easetype", iTween.EaseType.linear, "oncompletetarget", gameObject,
                                                       "oncomplete", "Done"));
+
+                _gotoNextFallBack = onDone;
             }
         }
 
         void Update ()
         {
             //Debug.Log(GetCurrentCheckPoint().transform.position);
+        }
+
+        public void Done()
+        {
+            if(_gotoNextFallBack != null)
+                _gotoNextFallBack.Invoke();
+
+            _moving = false;
         }
 
         public void RefreshPath()

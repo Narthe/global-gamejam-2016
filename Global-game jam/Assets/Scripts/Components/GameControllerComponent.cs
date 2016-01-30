@@ -27,21 +27,31 @@ namespace Assets.Scripts.Components
 
             Instance = this;
             MacroRegognizerComponent.InputSequence = _pathControllerComponent.GetCurrentCheckPoint().InputsSequences.ToArray();
-            MacroRegognizerComponent.OnMacroOk.AddListener(() => _pathControllerComponent.GotoNextWaypoint());
+            MacroRegognizerComponent.OnMacroOk.AddListener(MacroOk);
         }
-	
+
+        public void MacroOk()
+        {
+            MacroRegognizerComponent.InputSequence = null;
+            _pathControllerComponent.GotoNextWaypoint(UpdateSequence);
+        }
+
         // Update is called once per framet
         void Update ()
         {
             UpdateMetronome();
+        }
 
+        void UpdateSequence()
+        {
+            MacroRegognizerComponent.InputSequence = _pathControllerComponent.GetCurrentCheckPoint().InputsSequences.ToArray();
         }
 
         private void UpdateMetronome()
         {
             _rateInSec = (BPMRate / 60);
             Curr = Time.time % _rateInSec / _rateInSec;
-            TickIndex = (long) (Time.time/_rateInSec);
+            TickIndex = (long) (Time.time/_rateInSec);        
         }
     }
 }

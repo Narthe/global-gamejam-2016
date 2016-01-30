@@ -28,7 +28,7 @@ namespace Assets.Scripts.Components.UI
 
         #endregion
 
-#region UI exposed
+        #region UI exposed
 
         public float AcceptanceArea = .2f;
         public Image AcceptanceAreaImage;
@@ -39,20 +39,21 @@ namespace Assets.Scripts.Components.UI
         #endregion
 
         // Use this for initialization
-        void Start () {
-	
+        void Start()
+        {
+
         }
-	
+
         // Update is called once per frame
-        void Update ()
+        void Update()
         {
             CheckMacro();
-            UpdateMetro();        
+            UpdateMetro();
         }
 
         private void UpdateMetro()
         {
-            AcceptanceAreaImage.rectTransform.offsetMin = new Vector2((Background.rectTransform.rect.width/2f) - ((AcceptanceArea*1920f)/2f),0);
+            AcceptanceAreaImage.rectTransform.offsetMin = new Vector2((Background.rectTransform.rect.width / 2f) - ((AcceptanceArea * 1920f) / 2f), 0);
             AcceptanceAreaImage.rectTransform.offsetMax = new Vector2((Background.rectTransform.rect.width / 2f) + ((AcceptanceArea * 1920f) / 2f), 50);
             Metronome.fillAmount = GameControllerComponent.Instance.Curr;
         }
@@ -61,7 +62,9 @@ namespace Assets.Scripts.Components.UI
         {
             _curTick = GameControllerComponent.Instance.TickIndex;
 
-            if(InputSequence != null && InputSequence.Any())
+            if (InputSequence == null || !InputSequence.Any())
+                Background.color = Color.white;
+            else 
                 Background.color = GetColorFromAction(InputSequence[index]);
 
             if (Mathf.Abs(Input.GetAxis("Vertical")) > 0f && _wasNeutral)
@@ -69,12 +72,12 @@ namespace Assets.Scripts.Components.UI
                 _wasNeutral = false;
                 _inputOk = CheckInputIsRight();
 
-                if (!_inputOk || (index > 0 && _curTick > _lastInputTick+1 || _curTick == _lastInputTick))
+                if (!_inputOk || (index > 0 && _curTick > _lastInputTick + 1 || _curTick == _lastInputTick))
                 {
                     ClearCurrentInput();
                 }
 
-                if (_inputOk && GameControllerComponent.Instance.Curr > .5f - AcceptanceArea/2f && GameControllerComponent.Instance.Curr < .5f + AcceptanceArea)
+                if (_inputOk && GameControllerComponent.Instance.Curr > .5f - AcceptanceArea / 2f && GameControllerComponent.Instance.Curr < .5f + AcceptanceArea)
                 {
                     AddCurrentInput();
                     Debug.LogError(index);
@@ -95,11 +98,11 @@ namespace Assets.Scripts.Components.UI
                 }
                 _lastInputTick = GameControllerComponent.Instance.TickIndex;
             }
-            else if( index > 0 && _curTick > _lastInputTick + 1)
+            else if (index > 0 && _curTick > _lastInputTick + 1)
             {
                 ClearCurrentInput();
             }
-            else if(index == 0 && CurrentInputContainer.transform.childCount > 0 && _curTick >_lastInputTick)
+            else if (index == 0 && CurrentInputContainer.transform.childCount > 0 && _curTick > _lastInputTick)
                 ClearCurrentInput();
 
             if (Mathf.Abs(Input.GetAxis("Vertical")) <= 0f && !_wasNeutral)
@@ -111,7 +114,7 @@ namespace Assets.Scripts.Components.UI
             if (!Input.GetButton(InputSequence[index]))
                 return false;
 
-            foreach(string s in GameControllerComponent.PossibleInputs.Where(s => s != InputSequence[index]))
+            foreach (string s in GameControllerComponent.PossibleInputs.Where(s => s != InputSequence[index]))
             {
                 if (Input.GetButton(s))
                     return false;

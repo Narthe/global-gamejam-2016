@@ -29,10 +29,5 @@ public class MoveAlongPath : MonoBehaviour
  
     }
 
-
-    public void Done()
-    {
-        moving = false;
-    }
 }
 

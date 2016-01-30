@@ -150,6 +150,10 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 2061332899}
     m_Modifications:
+    - target: {fileID: 11480902, guid: 513dbf2f1bb84434ba3e1241bb6778b5, type: 2}
+      propertyPath: InputsSequences.Array.size
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 486666, guid: 513dbf2f1bb84434ba3e1241bb6778b5, type: 2}
       propertyPath: m_LocalPosition.x
       value: 4.72
@@ -185,6 +189,10 @@ Prefab:
     - target: {fileID: 166252, guid: 513dbf2f1bb84434ba3e1241bb6778b5, type: 2}
       propertyPath: m_Name
       value: CheckPoint (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 11480902, guid: 513dbf2f1bb84434ba3e1241bb6778b5, type: 2}
+      propertyPath: InputsSequences.Array.data[0]
+      value: Hit
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 513dbf2f1bb84434ba3e1241bb6778b5, type: 2}
@@ -636,6 +644,10 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 2061332899}
     m_Modifications:
+    - target: {fileID: 11480902, guid: 513dbf2f1bb84434ba3e1241bb6778b5, type: 2}
+      propertyPath: InputsSequences.Array.size
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 486666, guid: 513dbf2f1bb84434ba3e1241bb6778b5, type: 2}
       propertyPath: m_LocalPosition.x
       value: 2.08
@@ -671,6 +683,10 @@ Prefab:
     - target: {fileID: 166252, guid: 513dbf2f1bb84434ba3e1241bb6778b5, type: 2}
       propertyPath: m_Name
       value: CheckPoint (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 11480902, guid: 513dbf2f1bb84434ba3e1241bb6778b5, type: 2}
+      propertyPath: InputsSequences.Array.data[0]
+      value: Play
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 513dbf2f1bb84434ba3e1241bb6778b5, type: 2}
@@ -744,6 +760,10 @@ Prefab:
       propertyPath: Target
       value: 
       objectReference: {fileID: 332622657}
+    - target: {fileID: 11415182, guid: 53c08a7408fc72b479b2fc0f3c21f345, type: 2}
+      propertyPath: m_speed
+      value: 20
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 53c08a7408fc72b479b2fc0f3c21f345, type: 2}
   m_IsPrefabParent: 0
@@ -754,6 +774,10 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 2061332899}
     m_Modifications:
+    - target: {fileID: 11480902, guid: 513dbf2f1bb84434ba3e1241bb6778b5, type: 2}
+      propertyPath: InputsSequences.Array.size
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 486666, guid: 513dbf2f1bb84434ba3e1241bb6778b5, type: 2}
       propertyPath: m_LocalPosition.x
       value: 9.43
@@ -789,6 +813,10 @@ Prefab:
     - target: {fileID: 166252, guid: 513dbf2f1bb84434ba3e1241bb6778b5, type: 2}
       propertyPath: m_Name
       value: CheckPoint (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 11480902, guid: 513dbf2f1bb84434ba3e1241bb6778b5, type: 2}
+      propertyPath: InputsSequences.Array.data[0]
+      value: Jump
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 513dbf2f1bb84434ba3e1241bb6778b5, type: 2}
@@ -852,6 +880,18 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 11480902, guid: 513dbf2f1bb84434ba3e1241bb6778b5, type: 2}
       propertyPath: InputsSequences.Array.data[1]
+      value: Hit
+      objectReference: {fileID: 0}
+    - target: {fileID: 11480902, guid: 513dbf2f1bb84434ba3e1241bb6778b5, type: 2}
+      propertyPath: InputsSequences.Array.data[2]
+      value: Hit
+      objectReference: {fileID: 0}
+    - target: {fileID: 11480902, guid: 513dbf2f1bb84434ba3e1241bb6778b5, type: 2}
+      propertyPath: InputsSequences.Array.data[3]
+      value: Hit
+      objectReference: {fileID: 0}
+    - target: {fileID: 11480902, guid: 513dbf2f1bb84434ba3e1241bb6778b5, type: 2}
+      propertyPath: InputsSequences.Array.data[4]
       value: Hit
       objectReference: {fileID: 0}
     m_RemovedComponents: []
