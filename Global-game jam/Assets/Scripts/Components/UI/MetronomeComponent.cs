@@ -9,7 +9,8 @@ namespace Assets.Scripts.Components.UI
 {
     public class MetronomeComponent : MonoBehaviour
     {
-        public Image Target;
+        public Image Background;
+        public Image Metronome;
         private RectTransform _rect;
 
         #region Macro
@@ -37,8 +38,6 @@ namespace Assets.Scripts.Components.UI
 
         #endregion
 
-        private static string[] _possibleInputs = new[] {"Walk", "Hit", "Jump", "Play"};
-
         // Use this for initialization
         void Start () {
 	
@@ -53,14 +52,18 @@ namespace Assets.Scripts.Components.UI
 
         private void UpdateMetro()
         {
-            AcceptanceAreaImage.rectTransform.offsetMin = new Vector2((1920f/2f) - ((AcceptanceArea*1920f)/2f),0);
-            AcceptanceAreaImage.rectTransform.offsetMax = new Vector2((1920f / 2f) + ((AcceptanceArea * 1920f) / 2f), 200);
-            Target.fillAmount = GameControllerComponent.Instance.Curr;
+            AcceptanceAreaImage.rectTransform.offsetMin = new Vector2((Background.rectTransform.rect.width/2f) - ((AcceptanceArea*1920f)/2f),0);
+            AcceptanceAreaImage.rectTransform.offsetMax = new Vector2((Background.rectTransform.rect.width / 2f) + ((AcceptanceArea * 1920f) / 2f), 50);
+            Metronome.fillAmount = GameControllerComponent.Instance.Curr;
         }
 
         void CheckMacro()
         {
             _curTick = GameControllerComponent.Instance.TickIndex;
+
+            if(InputSequence != null && InputSequence.Any())
+                Background.color = GetColorFromAction(InputSequence[index]);
+
             if (Mathf.Abs(Input.GetAxis("Vertical")) > 0f && _wasNeutral)
             {
                 _wasNeutral = false;
@@ -108,7 +111,7 @@ namespace Assets.Scripts.Components.UI
             if (!Input.GetButton(InputSequence[index]))
                 return false;
 
-            foreach(string s in _possibleInputs.Where(s => s != InputSequence[index]))
+            foreach(string s in GameControllerComponent.PossibleInputs.Where(s => s != InputSequence[index]))
             {
                 if (Input.GetButton(s))
                     return false;
@@ -130,24 +133,49 @@ namespace Assets.Scripts.Components.UI
         private void AddCurrentInput()
         {
             InputComponent i = GuiHelper.Instanciate(InputPrefab, CurrentInputContainer).GetComponent<InputComponent>();
-            switch (InputSequence[index])
-            {
-                case "Walk":
-                    i.Image.color = Color.red;
-                    break;
-                case "Hit":
-                    i.Image.color = Color.magenta;
-                    break;
-                case "Play":
-                    i.Image.color = Color.green;
-                    break;
-                case "Jump":
-                    i.Image.color = Color.blue;
-                    break;
-
-            }
+            i.Image.sprite = GetTextureFromAction(InputSequence[index]);
             this.index++;
 
         }
+
+        private Color GetColorFromAction(string action)
+        {
+            switch (InputSequence[index])
+            {
+                case "Walk":
+                    return Color.red;
+                case "Hit":
+                    return Color.blue;
+                case "Play":
+                    return Color.yellow;
+                case "Jump":
+                    return Color.green;
+            }
+            return Color.white;
+        }
+
+        private Sprite GetTextureFromAction(string action)
+        {
+            switch (InputSequence[index])
+            {
+                case "Walk":
+                    return XboxButtonsB;
+                case "Hit":
+                    return XboxButtonsX;
+                case "Play":
+                    return XboxButtonsY;
+                case "Jump":
+                    return XboxButtonsA;
+            }
+            return null;
+        }
+
+        public Sprite XboxButtonsA;
+
+        public Sprite XboxButtonsY;
+
+        public Sprite XboxButtonsX;
+
+        public Sprite XboxButtonsB;
     }
 }

@@ -5,10 +5,11 @@ namespace Assets.Scripts.Components
 {
     public class GameControllerComponent : MonoBehaviour
     {
-    #region public components reference
+        public static string[] PossibleInputs = new[] { "Walk", "Hit", "Jump", "Play" };
+        #region public components reference
         public StoryLineComponent StoryLineComponent;
         public MetronomeComponent MacroRegognizerComponent;
-    #endregion
+        #endregion
 
         private float _rateInSec;
         public int BPMRate = 110;
