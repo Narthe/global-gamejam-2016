@@ -13,12 +13,16 @@ namespace Assets.Scripts.Components
         private float _rateInSec;
         public int BPMRate = 110;
         public float Curr;
+        public GameObject PathController;
+        private PathControllerComponent _pathControllerComponent;
 
         public static GameControllerComponent Instance;
 
         // Use this for initialization
         void Start ()
         {
+            _pathControllerComponent = PathController.GetComponent<PathControllerComponent>();
+
             Instance = this;
             MacroRegognizerComponent.inputCodes = new[] {"Walk","Hit"};
             MacroRegognizerComponent.OnMacroOk.AddListener(() => StoryLineComponent.SetCurrentText("MACRO OK"));

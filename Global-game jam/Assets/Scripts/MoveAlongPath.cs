@@ -5,14 +5,20 @@ public class MoveAlongPath : MonoBehaviour
 {
     public Vector3[] waypoints;
     public float m_speed = 1.0f;
+    public GameObject PathController;
+
+    private iTweenPath _iTweenPath;
+    private PathControllerComponent _pathControllerComponent;
     private int i = 0;
-    public iTweenPath Path;
 
     private bool moving = false;
 
     public void Start()
     {
-        waypoints = Path.nodes.ToArray();
+        _iTweenPath = PathController.GetComponent<iTweenPath>();
+        _pathControllerComponent = PathController.GetComponent<PathControllerComponent>();
+
+        waypoints = _iTweenPath.nodes.ToArray();
         transform.position = waypoints[0];
     }
 
@@ -22,7 +28,10 @@ public class MoveAlongPath : MonoBehaviour
         {
             i++;
             moving = true;
-            iTween.MoveTo(gameObject, iTween.Hash("position", waypoints[i], "speed", m_speed, "easetype", iTween.EaseType.linear, "oncompletetarget", gameObject, "oncomplete", "Done"));
+            iTween.MoveTo(gameObject, iTween.Hash("position", waypoints[i], "speed", m_speed,
+                                                  "easetype", iTween.EaseType.linear, "oncompletetarget", gameObject, 
+                                                  "oncomplete", "Done"));
+            _pathControllerComponent.GotoNextWaypoint(_pathControllerComponent.CurrentCheckPoint);
         }
  
     }
