@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Assets.Scripts.Helpers;
+using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
 
@@ -74,7 +75,7 @@ namespace Assets.Scripts.Components.UI
                         if (OnMacroOk != null)
                             OnMacroOk.Invoke();
 
-                        ClearCurrentInput();
+                        //ClearCurrentInput();
 
                     }
 
@@ -86,6 +87,10 @@ namespace Assets.Scripts.Components.UI
                 }
                 _lastInputTime = Time.time;
             }
+            else if( index > 0 && Time.time - _lastInputTime > GameControllerComponent.Instance.BPMRate / 120f)
+            {
+                ClearCurrentInput();
+            }
 
             if (Mathf.Abs(Input.GetAxis("Vertical")) <= 0f && !_wasNeutral)
                 _wasNeutral = true;
@@ -93,11 +98,29 @@ namespace Assets.Scripts.Components.UI
 
         private void ClearCurrentInput()
         {
+            CurrentInputContainer.ClearChilds();
             this.index = 0;
         }
 
         private void AddCurrentInput()
         {
+            InputComponent i = GuiHelper.Instanciate(InputPrefab, CurrentInputContainer).GetComponent<InputComponent>();
+            switch (inputCodes[index])
+            {
+                case "Walk":
+                    i.Image.color = Color.red;
+                    break;
+                case "Hit":
+                    i.Image.color = Color.magenta;
+                    break;
+                case "Play":
+                    i.Image.color = Color.green;
+                    break;
+                case "Jump":
+                    i.Image.color = Color.blue;
+                    break;
+
+            }
             this.index++;
 
         }
