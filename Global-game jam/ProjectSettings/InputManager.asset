@@ -105,9 +105,9 @@ InputManager:
     m_Name: Submit
     descriptiveName: 
     descriptiveNegativeName: 
-    negativeButton: down
+    negativeButton: 
     positiveButton: enter
-    altNegativeButton: s
+    altNegativeButton: 
     altPositiveButton: joystick button 1
     gravity: 3
     dead: 0.001
@@ -121,9 +121,9 @@ InputManager:
     m_Name: Cancel
     descriptiveName: 
     descriptiveNegativeName: 
-    negativeButton: down
+    negativeButton: 
     positiveButton: joystick button 2
-    altNegativeButton: s
+    altNegativeButton: 
     altPositiveButton: 
     gravity: 3
     dead: 0.001
