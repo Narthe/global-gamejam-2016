@@ -1,4 +1,5 @@
-﻿using Assets.Scripts.Helpers;
+﻿using System.Collections;
+using Assets.Scripts.Helpers;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
@@ -19,7 +20,7 @@ namespace Assets.Scripts.Components.UI
 
         int index = 0;
         private float _timeSinceLastInput;
-        private float _lastInputTime;
+        private long _lastInputTick;
         private bool _wasNeutral;
         private bool _inputOk;
 
@@ -31,8 +32,9 @@ namespace Assets.Scripts.Components.UI
         public Image AcceptanceAreaImage;
         public GameObject CurrentInputContainer;
         public GameObject InputPrefab;
+        private long _curTick;
 
-#endregion
+        #endregion
 
         // Use this for initialization
         void Start () {
@@ -55,12 +57,13 @@ namespace Assets.Scripts.Components.UI
 
         void CheckMacro()
         {
+            _curTick = GameControllerComponent.Instance.TickIndex;
             if (Mathf.Abs(Input.GetAxis("Vertical")) > 0f && _wasNeutral)
             {
                 _wasNeutral = false;
                 _inputOk = Input.GetButton(this.inputCodes[index]);
 
-                if (!_inputOk || (index > 0 && Time.time - _lastInputTime > GameControllerComponent.Instance.BPMRate / 60f))
+                if (!_inputOk || (index > 0 && _curTick > _lastInputTick+1))
                 {
                     ClearCurrentInput();
                 }
@@ -75,25 +78,31 @@ namespace Assets.Scripts.Components.UI
                         if (OnMacroOk != null)
                             OnMacroOk.Invoke();
 
-                        //ClearCurrentInput();
+                        ShowSuccessEffect();
 
                     }
 
                 }
                 else
                 {
-                    
                     ClearCurrentInput();
                 }
-                _lastInputTime = Time.time;
+                _lastInputTick = GameControllerComponent.Instance.TickIndex;
             }
-            else if( index > 0 && Time.time - _lastInputTime > GameControllerComponent.Instance.BPMRate / 120f)
+            else if( index > 0 && _curTick > _lastInputTick + 1)
             {
                 ClearCurrentInput();
             }
+            else if(index == 0 && CurrentInputContainer.transform.childCount > 0 && _curTick >_lastInputTick)
+                ClearCurrentInput();
 
             if (Mathf.Abs(Input.GetAxis("Vertical")) <= 0f && !_wasNeutral)
                 _wasNeutral = true;
+        }
+
+        private void ShowSuccessEffect()
+        {
+            this.index = 0;
         }
 
         private void ClearCurrentInput()

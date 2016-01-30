@@ -13,6 +13,7 @@ namespace Assets.Scripts.Components
         private float _rateInSec;
         public int BPMRate = 110;
         public float Curr;
+        public long TickIndex;
 
         public static GameControllerComponent Instance;
 
@@ -35,6 +36,7 @@ namespace Assets.Scripts.Components
         {
             _rateInSec = (BPMRate / 60);
             Curr = Time.time % _rateInSec / _rateInSec;
+            TickIndex = (long) (Time.time/_rateInSec);
         }
     }
 }
