@@ -1,47 +1,27 @@
 fileFormatVersion: 2
 guid: 77642c2d3e546eb4aa2bba88f323f734
-timeCreated: 1454191824
+timeCreated: 1454195849
 licenseType: Free
 ModelImporter:
   serializedVersion: 19
   fileIDToRecycleName:
-    100000: //RootNode
-    100002: terrain
-    100004: water
-    100006: terrain_MeshPart0
-    100008: terrain_MeshPart1
-    100010: terrain_MeshPart2
-    100012: terrain_MeshPart3
-    100014: road
-    400000: //RootNode
-    400002: terrain
-    400004: water
-    400006: terrain_MeshPart0
-    400008: terrain_MeshPart1
-    400010: terrain_MeshPart2
-    400012: terrain_MeshPart3
-    400014: road
-    2300000: terrain
-    2300002: water
-    2300004: terrain_MeshPart0
-    2300006: terrain_MeshPart1
-    2300008: terrain_MeshPart2
-    2300010: terrain_MeshPart3
-    2300012: road
-    3300000: terrain
-    3300002: water
-    3300004: terrain_MeshPart0
-    3300006: terrain_MeshPart1
-    3300008: terrain_MeshPart2
-    3300010: terrain_MeshPart3
-    3300012: road
-    4300000: water
+    100000: road
+    100002: //RootNode
+    100004: terrain
+    100006: water
+    400000: road
+    400002: //RootNode
+    400004: terrain
+    400006: water
+    2300000: road
+    2300002: terrain
+    2300004: water
+    3300000: road
+    3300002: terrain
+    3300004: water
+    4300000: road
     4300002: terrain
-    4300004: terrain_MeshPart0
-    4300006: terrain_MeshPart1
-    4300008: terrain_MeshPart2
-    4300010: terrain_MeshPart3
-    4300012: road
+    4300004: water
     7400000: Default Take
     9500000: //RootNode
   materials:
