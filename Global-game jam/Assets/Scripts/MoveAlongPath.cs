@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using Assets.Scripts.Components;
 
 public class MoveAlongPath : MonoBehaviour
 {
@@ -24,17 +25,10 @@ public class MoveAlongPath : MonoBehaviour
 
     public void Update()
     {
-        if (!moving && i < waypoints.Length - 1 && Input.GetKeyDown(KeyCode.A))
-        {
-            i++;
-            moving = true;
-            iTween.MoveTo(gameObject, iTween.Hash("position", waypoints[i], "speed", m_speed,
-                                                  "easetype", iTween.EaseType.linear, "oncompletetarget", gameObject, 
-                                                  "oncomplete", "Done"));
-            _pathControllerComponent.GotoNextWaypoint(_pathControllerComponent.CurrentCheckPoint);
-        }
+       
  
     }
+
 
     public void Done()
     {

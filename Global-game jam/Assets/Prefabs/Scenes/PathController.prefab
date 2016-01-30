@@ -17,6 +17,21 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &185980
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 474792}
+  m_Layer: 0
+  m_Name: Checkpoints
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!4 &416286
 Transform:
   m_ObjectHideFlags: 1
@@ -26,8 +41,21 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -13.1, y: -3.6999998, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 474792}
   m_Father: {fileID: 0}
+  m_RootOrder: 0
+--- !u!4 &474792
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 185980}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 416286}
   m_RootOrder: 0
 --- !u!114 &11415182
 MonoBehaviour:
@@ -40,6 +68,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 00be27868cdd7eb488b157de778539b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  CheckPoint: {fileID: 166252, guid: 513dbf2f1bb84434ba3e1241bb6778b5, type: 2}
+  CheckPointList: []
+  CurrentCheckPoint: {fileID: 486666, guid: 513dbf2f1bb84434ba3e1241bb6778b5, type: 2}
+  CheckPointsContainer: {fileID: 185980}
 --- !u!114 &11485996
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -55,7 +87,7 @@ MonoBehaviour:
   pathColor: {r: 0, g: 1, b: 1, a: 1}
   nodes:
   - {x: -16.350775, y: -3.684349, z: 0}
-  - {x: -16.33387, y: 0.8187313, z: 0}
+  - {x: -14.225224, y: 0.37008476, z: 0}
   - {x: -10.878329, y: -1.5803366, z: 0}
   - {x: -6.3937736, y: 1.6252661, z: 0}
   - {x: -0.8386564, y: -2.396059, z: 0}

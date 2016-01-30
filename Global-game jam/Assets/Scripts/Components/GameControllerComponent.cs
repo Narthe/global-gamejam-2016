@@ -24,8 +24,8 @@ namespace Assets.Scripts.Components
             _pathControllerComponent = PathController.GetComponent<PathControllerComponent>();
 
             Instance = this;
-            MacroRegognizerComponent.inputCodes = new[] {"Walk","Hit"};
-            MacroRegognizerComponent.OnMacroOk.AddListener(() => StoryLineComponent.SetCurrentText("MACRO OK"));
+            MacroRegognizerComponent.inputCodes = _pathControllerComponent.GetCurrentCheckPoint().InputsSequences.ToArray();
+            MacroRegognizerComponent.OnMacroOk.AddListener(() => _pathControllerComponent.GotoNextWaypoint());
         }
 	
         // Update is called once per frame

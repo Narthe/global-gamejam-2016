@@ -1,36 +1,64 @@
-﻿using UnityEngine;
-using System.Collections;
+﻿using System.Collections.Generic;
 using Assets.Scripts.Helpers;
-using System.Collections.Generic;
+using UnityEngine;
 
-public class PathControllerComponent : MonoBehaviour
+namespace Assets.Scripts.Components
 {
-    public GameObject CheckPoint;
-    public List<Transform> CheckPointList = new List<Transform>();
-    public Transform CurrentCheckPoint;
-         
-	void Start ()
+    public class PathControllerComponent : MonoBehaviour
     {
-        //Generate checkpoint game object foreach waypoint in ItweenPath script
-	    for(int i = 0; i < transform.GetComponent<iTweenPath>().nodeCount; i++)
-        {
-            GameObject currentGameObject = GuiHelper.Instanciate(CheckPoint, gameObject);
-            currentGameObject.name = "CheckPoint";
-            currentGameObject.transform.position = new Vector3(transform.GetComponent<iTweenPath>().nodes[i].x, 
-                                                               transform.GetComponent<iTweenPath>().nodes[i].y, 
-                                                               transform.GetComponent<iTweenPath>().nodes[i].z);
-            CheckPointList.Add(currentGameObject.transform);
-        }
-        CurrentCheckPoint = CheckPointList[0];
-    }
-	
-    public void GotoNextWaypoint(Transform CurrentPosition)
-    {
-        CurrentCheckPoint = CheckPointList[CheckPointList.IndexOf(CurrentPosition) + 1];
-    }
+        public GameObject CheckPoint;
+        public List<GameObject> CheckPointList = new List<GameObject>();
+        public GameObject CheckPointsContainer;
+        public float m_speed = 1.0f;
+        public iTweenPath ITweenPath;
+        private int _checkpointIndex;
 
-	void Update ()
-    {
-        Debug.Log(CurrentCheckPoint.position);
+        public GameObject Target;
+
+        private bool _moving = false;
+
+        void Start ()
+        {
+            _checkpointIndex = 0;
+            RefreshPath();
+            Target.transform.position = ITweenPath.nodes[_checkpointIndex];
+            
+        }
+	
+        public void GotoNextWaypoint()
+        {
+            _checkpointIndex++;
+            if (!_moving && _checkpointIndex < ITweenPath.nodes.Count - 1)
+            {
+                _checkpointIndex++;
+                _moving = true;
+                iTween.MoveTo(Target, iTween.Hash("position", ITweenPath.nodes[_checkpointIndex], "speed", m_speed,
+                                                      "easetype", iTween.EaseType.linear, "oncompletetarget", gameObject,
+                                                      "oncomplete", "Done"));
+            }
+        }
+
+        void Update ()
+        {
+            //Debug.Log(GetCurrentCheckPoint().transform.position);
+        }
+
+        public void RefreshPath()
+        {
+            ITweenPath.nodes = new List<Vector3>();
+            foreach (Transform t in CheckPointsContainer.transform)
+            {
+                ITweenPath.nodes.Add(t.position);
+                CheckPointList.Add(t.gameObject);
+            }
+            ITweenPath.nodeCount = ITweenPath.nodes.Count;
+            ITweenPath.pathVisible = false;
+            ITweenPath.pathVisible = true;
+        }
+
+        public CheckPointControllerComponent GetCurrentCheckPoint()
+        {
+            return CheckPointList[_checkpointIndex].GetComponent<CheckPointControllerComponent>();
+        }
     }
 }
