@@ -1,5 +1,6 @@
 ﻿using Assets.Scripts.Components.UI;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace Assets.Scripts.Components
 {
@@ -21,40 +22,62 @@ namespace Assets.Scripts.Components
         public static GameControllerComponent Instance;
 
         // Use this for initialization
-        void Start ()
+        void Start()
         {
             _pathControllerComponent = PathController.GetComponent<PathControllerComponent>();
-            MacroRegognizerComponent.OnMacroOk.AddListener(MacroOk);
+            MacroRegognizerComponent.OnMacroOk.AddListener(GotoNextCheckpoint);
 
             Instance = this;
             UpdateSequence();
         }
 
-        public void MacroOk()
+        public void GotoNextCheckpoint()
         {
             MacroRegognizerComponent.InputSequence = null;
             StoryLineComponent.SetCurrentText(_pathControllerComponent.GetCurrentCheckPoint().SucessMessage);
             _pathControllerComponent.GotoNextWaypoint(UpdateSequence);
 
         }
-	
+
+        public void GotoPreviousCheckpoint()
+        {
+            MacroRegognizerComponent.InputSequence = null;
+            _pathControllerComponent.GotoPreviousWaypoint(UpdateSequence);
+            StoryLineComponent.SetCurrentText(_pathControllerComponent.GetCurrentCheckPoint().StartMessage);
+
+        }
+
         // Update is called once per framet
-        void Update ()
+        void Update()
         {
             UpdateMetronome();
         }
 
         void UpdateSequence()
         {
-            MacroRegognizerComponent.InputSequence = _pathControllerComponent.GetCurrentCheckPoint().InputsSequences.ToArray();
-            StoryLineComponent.SetCurrentText(_pathControllerComponent.GetCurrentCheckPoint().StartMessage);
+            CheckPointControllerComponent ch = _pathControllerComponent.GetCurrentCheckPoint();
+            MacroRegognizerComponent.InputSequence = ch.InputsSequences.ToArray();
+            StoryLineComponent.SetCurrentText(ch.StartMessage);
+            BPMRate = ch.BPM;
+            MacroRegognizerComponent.AcceptanceArea = ch.AcceptanceArea;
+
+            switch (ch.OnFailure)
+            {
+                case OnFailure.Nothing:
+                    MacroRegognizerComponent.OnMacroFailed = null;
+                    break;
+                case OnFailure.Backtrack:
+                    MacroRegognizerComponent.OnMacroFailed = new UnityEvent();
+                    MacroRegognizerComponent.OnMacroFailed.AddListener(GotoPreviousCheckpoint);
+                    break;
+            }
         }
 
         private void UpdateMetronome()
         {
             _rateInSec = (BPMRate / 60);
             Curr = Time.time % _rateInSec / _rateInSec;
-            TickIndex = (long) (Time.time/_rateInSec);
+            TickIndex = (long)(Time.time / _rateInSec);
         }
     }
 }

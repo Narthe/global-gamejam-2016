@@ -17,8 +17,9 @@ namespace Assets.Scripts.Components.UI
         public float timeKey = 0f, timeCode = 0f;
 
         public UnityEvent OnMacroOk;
+        public UnityEvent OnMacroFailed;
 
-        public string[] InputSequence;
+        public CharacterAction[] InputSequence;
 
         int index = 0;
         private float _timeSinceLastInput;
@@ -75,6 +76,8 @@ namespace Assets.Scripts.Components.UI
                 if (!_inputOk || (index > 0 && _curTick > _lastInputTick + 1 || _curTick == _lastInputTick))
                 {
                     ClearCurrentInput();
+                    if(OnMacroFailed != null)
+                        OnMacroFailed.Invoke();
                 }
 
                 if (_inputOk && GameControllerComponent.Instance.Curr > .5f - AcceptanceArea / 2f && GameControllerComponent.Instance.Curr < .5f + AcceptanceArea)
@@ -101,6 +104,8 @@ namespace Assets.Scripts.Components.UI
             else if (index > 0 && _curTick > _lastInputTick + 1)
             {
                 ClearCurrentInput();
+                if (OnMacroFailed != null)
+                    OnMacroFailed.Invoke();
             }
             else if (index == 0 && CurrentInputContainer.transform.childCount > 0 && _curTick > _lastInputTick)
                 ClearCurrentInput();
@@ -111,10 +116,10 @@ namespace Assets.Scripts.Components.UI
 
         private bool CheckInputIsRight()
         {
-            if (!Input.GetButton(InputSequence[index]))
+            if (!Input.GetButton(InputSequence[index].ToString()))
                 return false;
 
-            foreach (string s in GameControllerComponent.PossibleInputs.Where(s => s != InputSequence[index]))
+            foreach (string s in GameControllerComponent.PossibleInputs.Where(s => s != InputSequence[index].ToString()))
             {
                 if (Input.GetButton(s))
                     return false;
@@ -141,33 +146,33 @@ namespace Assets.Scripts.Components.UI
 
         }
 
-        private Color GetColorFromAction(string action)
+        private Color GetColorFromAction(CharacterAction action)
         {
-            switch (InputSequence[index])
+            switch (action)
             {
-                case "Walk":
+                case CharacterAction.Walk:
                     return Color.red;
-                case "Hit":
+                case CharacterAction.Hit:
                     return Color.blue;
-                case "Play":
+                case CharacterAction.Play:
                     return Color.yellow;
-                case "Jump":
+                case CharacterAction.Jump:
                     return Color.green;
             }
             return Color.white;
         }
 
-        private Sprite GetTextureFromAction(string action)
+        private Sprite GetTextureFromAction(CharacterAction action)
         {
-            switch (InputSequence[index])
+            switch (action)
             {
-                case "Walk":
+                case CharacterAction.Walk:
                     return XboxButtonsB;
-                case "Hit":
+                case CharacterAction.Hit:
                     return XboxButtonsX;
-                case "Play":
+                case CharacterAction.Play:
                     return XboxButtonsY;
-                case "Jump":
+                case CharacterAction.Jump:
                     return XboxButtonsA;
             }
             return null;

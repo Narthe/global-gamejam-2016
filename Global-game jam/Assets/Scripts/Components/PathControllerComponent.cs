@@ -42,6 +42,25 @@ namespace Assets.Scripts.Components
             }
         }
 
+        public void GotoPreviousWaypoint(Action OnDone)
+        {
+            if (!_moving && _checkpointIndex < ITweenPath.nodes.Count - 1)
+            {
+                _checkpointIndex--;
+                _moving = true;
+                iTween.MoveTo(Target, iTween.Hash("position", ITweenPath.nodes[_checkpointIndex], "speed", m_speed,
+                                                      "easetype", iTween.EaseType.linear, "oncompletetarget", gameObject,
+                                                      "oncomplete", "Done"));
+
+                _gotoNextFallBack = OnDone;
+            }
+        }
+
+        public CheckPointControllerComponent GetCurrentCheckPoint()
+        {
+            return CheckPointList[_checkpointIndex].GetComponent<CheckPointControllerComponent>();
+        }
+
         void Update ()
         {
             //Debug.Log(GetCurrentCheckPoint().transform.position);
@@ -65,11 +84,6 @@ namespace Assets.Scripts.Components
                 CheckPointList.Add(t.gameObject);
             }
             ITweenPath.nodeCount = ITweenPath.nodes.Count;
-        }
-
-        public CheckPointControllerComponent GetCurrentCheckPoint()
-        {
-            return CheckPointList[_checkpointIndex].GetComponent<CheckPointControllerComponent>();
         }
 
         public void AddCheckPoint()

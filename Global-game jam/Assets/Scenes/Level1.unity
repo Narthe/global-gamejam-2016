@@ -234,6 +234,14 @@ Prefab:
       propertyPath: delayTracking
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 11423418, guid: 098a72ced29ab7c47afe7bf505cd3514, type: 2}
+      propertyPath: m_FillAmount
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 22335580, guid: 098a72ced29ab7c47afe7bf505cd3514, type: 2}
+      propertyPath: m_RenderMode
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 098a72ced29ab7c47afe7bf505cd3514, type: 2}
   m_IsPrefabParent: 0
@@ -444,7 +452,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 390912719}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -6.68, y: -2.94, z: 0}
+  m_LocalPosition: {x: -13.7, y: -5.9, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 962302579}
@@ -460,11 +468,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fca94351acab8eb4b9a9cf14172e9a88, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  InputsSequences:
-  - Jump
+  InputsSequences: 01000000
   StartMessage: While she was walking,she noticed that a dead tree was in the way
   SucessMessage: "\u2026.but the girl with shamisen didn\u2019t become discouraged
     and stepped over."
+  BPM: 110
+  AcceptanceArea: 0.3
+  OnFailure: 1
 --- !u!4 &658546215 stripped
 Transform:
   m_PrefabParentObject: {fileID: 435312, guid: e7df32b7e369e3c4683103f0ab9bda05, type: 2}
@@ -531,6 +541,51 @@ SpriteRenderer:
 Transform:
   m_PrefabParentObject: {fileID: 435312, guid: e7df32b7e369e3c4683103f0ab9bda05, type: 2}
   m_PrefabInternal: {fileID: 1025562689}
+--- !u!1 &814853707
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 814853708}
+  - 114: {fileID: 814853709}
+  m_Layer: 0
+  m_Name: Checkpoint_5
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &814853708
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 814853707}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -13.1, y: -3.6999998, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 962302579}
+  m_RootOrder: 4
+--- !u!114 &814853709
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 814853707}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fca94351acab8eb4b9a9cf14172e9a88, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  InputsSequences: 000000000000000000000000
+  StartMessage: 
+  SucessMessage: And the girl went on her way.
+  BPM: 110
+  AcceptanceArea: 0.3
+  OnFailure: 1
 --- !u!4 &869852901 stripped
 Transform:
   m_PrefabParentObject: {fileID: 435312, guid: e7df32b7e369e3c4683103f0ab9bda05, type: 2}
@@ -968,7 +1023,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1069560064}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -8.94, y: -5.36, z: 0}
+  m_LocalPosition: {x: -18.3, y: -11.62, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 962302579}
@@ -984,13 +1039,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fca94351acab8eb4b9a9cf14172e9a88, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  InputsSequences:
-  - Walk
-  - Walk
-  - Walk
+  InputsSequences: 000000000000000000000000
   StartMessage: 
   SucessMessage: The girl with shamisen was walking along a path toward the north
     altar...
+  BPM: 110
+  AcceptanceArea: 0.3
+  OnFailure: 0
 --- !u!1 &1229736563
 GameObject:
   m_ObjectHideFlags: 0
@@ -1049,6 +1104,51 @@ SpriteRenderer:
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
+--- !u!1 &1244570272
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 1244570273}
+  - 114: {fileID: 1244570274}
+  m_Layer: 0
+  m_Name: Checkpoint_4
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1244570273
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1244570272}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -13.1, y: -3.6999998, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 962302579}
+  m_RootOrder: 3
+--- !u!114 &1244570274
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1244570272}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fca94351acab8eb4b9a9cf14172e9a88, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  InputsSequences: 030000000300000003000000
+  StartMessage: Two wild dogs suddenly appeared and barked.
+  SucessMessage: Brave, she managed to scare the beasts with her sword.
+  BPM: 90
+  AcceptanceArea: 0.3
+  OnFailure: 1
 --- !u!4 &1287453299 stripped
 Transform:
   m_PrefabParentObject: {fileID: 435312, guid: e7df32b7e369e3c4683103f0ab9bda05, type: 2}
@@ -1235,6 +1335,53 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e7df32b7e369e3c4683103f0ab9bda05, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &1791908774
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 1791908775}
+  - 114: {fileID: 1791908776}
+  m_Layer: 0
+  m_Name: Checkpoint_6
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1791908775
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1791908774}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -13.1, y: -3.6999998, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 962302579}
+  m_RootOrder: 5
+--- !u!114 &1791908776
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1791908774}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fca94351acab8eb4b9a9cf14172e9a88, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  InputsSequences: 020000000200000002000000020000000200000002000000
+  StartMessage: "The girl with shamisen arrived at north altar\u2019s gates and began
+    playing her instrument."
+  SucessMessage: The doors opened while she was playing, and the girl went to the
+    altar.
+  BPM: 70
+  AcceptanceArea: 0.3
+  OnFailure: 0
 --- !u!1001 &1810687212
 Prefab:
   m_ObjectHideFlags: 0
@@ -1334,7 +1481,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1957296176}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3.07, y: -1.06, z: 0}
+  m_LocalPosition: {x: -3.07, y: -1.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 962302579}
@@ -1350,6 +1497,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fca94351acab8eb4b9a9cf14172e9a88, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  InputsSequences: []
+  InputsSequences: 000000000000000000000000
   StartMessage: 
-  SucessMessage: 
+  SucessMessage: And the girl went on her way.
+  BPM: 110
+  AcceptanceArea: 0.3
+  OnFailure: 0
