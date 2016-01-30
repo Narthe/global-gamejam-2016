@@ -1,76 +1,78 @@
 ﻿using UnityEngine;
-using System.Collections;
 
-public class CameraController : MonoBehaviour {
+namespace Assets.Scripts
+{
+    [RequireComponent(typeof(Camera))]
+    public class CameraController : MonoBehaviour
+    {
 
-	public Transform StartingTarget;
-	public float DelayTracking;
+        private Camera _camera;
+        public Transform startingTarget;
+        public float delayTracking;
 
-	public Transform FirstDelimiter;
-	public Transform SecondDelimiter;
+        float TARGET_WIDTH = 1920f;
+        float TARGET_HEIGHT = 1080f;
+        int PIXELS_TO_UNITS = 30; // 1:1 ratio of pixels to units
 
-	//Object to follow
-	private Transform _target;
 
-	//Bounds
-	private float _minX;
-	private float _maxX;
-	private float _minY;
-	private float _maxY;
+        //Object to follow
+        private Transform target;
 
-	//Camera position
-	private float _xPos;
-	private float _yPos;
-	private float _zPos;
 
-	void Start () {
-		_target = StartingTarget;
+        //Camera position
+        private float xPos;
+        private float yPos;
+        private float zPos;
 
-		_minX = FirstDelimiter.position.x;
-		_maxX = SecondDelimiter.position.x;
+        void Start () {
+            target = startingTarget;
+            _camera = GetComponent<Camera>();
 
-		_minY = FirstDelimiter.position.y;
-		_maxY = SecondDelimiter.position.y;
-
-		_xPos = transform.position.x;
-		_yPos = transform.position.y;
-		_zPos = transform.position.z;
-	}
+            xPos = transform.position.x;
+            yPos = transform.position.y;
+            zPos = transform.position.z;
+        }
 	
-	// Update is called once per frame
-	void Update () {
+        // Update is called once per frame
+        void Update () {
+            if (target != null)
+            {
+                //Define new position
+                xPos = target.position.x;
+                yPos = target.position.y;
 
-		//Define new position
-		_xPos = _target.position.x;
-		_yPos = _target.position.y;
+                Vector3 newPosition = new Vector3(xPos, yPos, zPos);
 
-		//Check if target is out of bounds
-		//X-axis
-		if(_xPos < _minX){
-			_xPos = _minX;
-		}
-		if(_xPos > _maxX){
-			_xPos = _maxX;
-		}
+                transform.position = Vector3.Lerp(transform.position, newPosition, Time.deltaTime*delayTracking);
+            }
 
-		//Y-axis
-		if(_yPos < _minY){
-			_yPos = _minY;
-		}
-		if(_yPos > _maxY){
-			_yPos = _maxY;
-		}
+            UpdateCamera();
+        }
 
-		Vector3 newPosition = new Vector3(_xPos, _yPos, _zPos);
+        private void UpdateCamera()
+        {
+            float desiredRatio = TARGET_WIDTH / TARGET_HEIGHT;
+            float currentRatio = (float)Screen.width / (float)Screen.height;
+            if (currentRatio >= desiredRatio)
+            {
+                // Our resolution has plenty of width, so we just need to use the height to determine the camera size
+                _camera.orthographicSize = TARGET_HEIGHT / 4 / PIXELS_TO_UNITS;
+            }
+            else
+            {
+                // Our camera needs to zoom out further than just fitting in the height of the image.
+                // Determine how much bigger it needs to be, then apply that to our original algorithm.
+                float differenceInSize = desiredRatio / currentRatio;
+                _camera.orthographicSize = TARGET_HEIGHT / 4 / PIXELS_TO_UNITS * differenceInSize;
+            }
+        }
 
-		transform.position = Vector3.Lerp(transform.position, newPosition, Time.deltaTime * DelayTracking);
-	}
+        public void RedefineTarget(Transform target){
+            this.target = target;
+        }
 
-	public void RedefineTarget(Transform target){
-		_target = target;
-	}
-
-	public void RedefineTarget(string targetName){
-		_target = GameObject.Find(targetName).transform;
-	}
+        public void RedefineTarget(string targetName){
+            this.target = GameObject.Find(targetName).transform;
+        }
+    }
 }
