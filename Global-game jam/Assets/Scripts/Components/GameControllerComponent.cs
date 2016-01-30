@@ -7,7 +7,7 @@ namespace Assets.Scripts.Components
     {
     #region public components reference
         public StoryLineComponent StoryLineComponent;
-        public MacroRecognizerComponent MacroRegognizerComponent;
+        public MetronomeComponent MacroRegognizerComponent;
     #endregion
 
         private float _rateInSec;
@@ -20,7 +20,7 @@ namespace Assets.Scripts.Components
         void Start ()
         {
             Instance = this;
-            MacroRegognizerComponent.inputCodes = new[] {"Submit","Cancel"};
+            MacroRegognizerComponent.inputCodes = new[] {"Walk","Hit"};
             MacroRegognizerComponent.OnMacroOk.AddListener(() => StoryLineComponent.SetCurrentText("MACRO OK"));
         }
 	
