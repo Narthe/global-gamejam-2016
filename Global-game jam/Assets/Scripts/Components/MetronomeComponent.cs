@@ -1,4 +1,6 @@
-﻿using Assets.Scripts.Helpers;
+﻿using System.Collections;
+using System.Linq;
+using Assets.Scripts.Helpers;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
@@ -7,7 +9,8 @@ namespace Assets.Scripts.Components.UI
 {
     public class MetronomeComponent : MonoBehaviour
     {
-        public Image Target;
+        public Image Background;
+        public Image Metronome;
         private RectTransform _rect;
 
         #region Macro
@@ -15,11 +18,11 @@ namespace Assets.Scripts.Components.UI
 
         public UnityEvent OnMacroOk;
 
-        public string[] inputCodes;
+        public string[] InputSequence;
 
         int index = 0;
         private float _timeSinceLastInput;
-        private float _lastInputTime;
+        private long _lastInputTick;
         private bool _wasNeutral;
         private bool _inputOk;
 
@@ -31,8 +34,9 @@ namespace Assets.Scripts.Components.UI
         public Image AcceptanceAreaImage;
         public GameObject CurrentInputContainer;
         public GameObject InputPrefab;
+        private long _curTick;
 
-#endregion
+        #endregion
 
         // Use this for initialization
         void Start () {
@@ -48,19 +52,24 @@ namespace Assets.Scripts.Components.UI
 
         private void UpdateMetro()
         {
-            AcceptanceAreaImage.rectTransform.offsetMin = new Vector2((1920f/2f) - ((AcceptanceArea*1920f)/2f),0);
-            AcceptanceAreaImage.rectTransform.offsetMax = new Vector2((1920f / 2f) + ((AcceptanceArea * 1920f) / 2f), 200);
-            Target.fillAmount = GameControllerComponent.Instance.Curr;
+            AcceptanceAreaImage.rectTransform.offsetMin = new Vector2((Background.rectTransform.rect.width/2f) - ((AcceptanceArea*1920f)/2f),0);
+            AcceptanceAreaImage.rectTransform.offsetMax = new Vector2((Background.rectTransform.rect.width / 2f) + ((AcceptanceArea * 1920f) / 2f), 50);
+            Metronome.fillAmount = GameControllerComponent.Instance.Curr;
         }
 
         void CheckMacro()
         {
+            _curTick = GameControllerComponent.Instance.TickIndex;
+
+            if(InputSequence != null && InputSequence.Any())
+                Background.color = GetColorFromAction(InputSequence[index]);
+
             if (Mathf.Abs(Input.GetAxis("Vertical")) > 0f && _wasNeutral)
             {
                 _wasNeutral = false;
-                _inputOk = Input.GetButton(this.inputCodes[index]);
+                _inputOk = CheckInputIsRight();
 
-                if (!_inputOk || (index > 0 && Time.time - _lastInputTime > GameControllerComponent.Instance.BPMRate / 60f))
+                if (!_inputOk || (index > 0 && _curTick > _lastInputTick+1 || _curTick == _lastInputTick))
                 {
                     ClearCurrentInput();
                 }
@@ -70,30 +79,49 @@ namespace Assets.Scripts.Components.UI
                     AddCurrentInput();
                     Debug.LogError(index);
 
-                    if (this.index >= this.inputCodes.Length)
+                    if (this.index >= this.InputSequence.Length)
                     {
                         if (OnMacroOk != null)
                             OnMacroOk.Invoke();
 
-                        //ClearCurrentInput();
+                        ShowSuccessEffect();
 
                     }
 
                 }
                 else
                 {
-                    
                     ClearCurrentInput();
                 }
-                _lastInputTime = Time.time;
+                _lastInputTick = GameControllerComponent.Instance.TickIndex;
             }
-            else if( index > 0 && Time.time - _lastInputTime > GameControllerComponent.Instance.BPMRate / 120f)
+            else if( index > 0 && _curTick > _lastInputTick + 1)
             {
                 ClearCurrentInput();
             }
+            else if(index == 0 && CurrentInputContainer.transform.childCount > 0 && _curTick >_lastInputTick)
+                ClearCurrentInput();
 
             if (Mathf.Abs(Input.GetAxis("Vertical")) <= 0f && !_wasNeutral)
                 _wasNeutral = true;
+        }
+
+        private bool CheckInputIsRight()
+        {
+            if (!Input.GetButton(InputSequence[index]))
+                return false;
+
+            foreach(string s in GameControllerComponent.PossibleInputs.Where(s => s != InputSequence[index]))
+            {
+                if (Input.GetButton(s))
+                    return false;
+            }
+            return true;
+        }
+
+        private void ShowSuccessEffect()
+        {
+            this.index = 0;
         }
 
         private void ClearCurrentInput()
@@ -105,24 +133,49 @@ namespace Assets.Scripts.Components.UI
         private void AddCurrentInput()
         {
             InputComponent i = GuiHelper.Instanciate(InputPrefab, CurrentInputContainer).GetComponent<InputComponent>();
-            switch (inputCodes[index])
-            {
-                case "Walk":
-                    i.Image.color = Color.red;
-                    break;
-                case "Hit":
-                    i.Image.color = Color.magenta;
-                    break;
-                case "Play":
-                    i.Image.color = Color.green;
-                    break;
-                case "Jump":
-                    i.Image.color = Color.blue;
-                    break;
-
-            }
+            i.Image.sprite = GetTextureFromAction(InputSequence[index]);
             this.index++;
 
         }
+
+        private Color GetColorFromAction(string action)
+        {
+            switch (InputSequence[index])
+            {
+                case "Walk":
+                    return Color.red;
+                case "Hit":
+                    return Color.blue;
+                case "Play":
+                    return Color.yellow;
+                case "Jump":
+                    return Color.green;
+            }
+            return Color.white;
+        }
+
+        private Sprite GetTextureFromAction(string action)
+        {
+            switch (InputSequence[index])
+            {
+                case "Walk":
+                    return XboxButtonsB;
+                case "Hit":
+                    return XboxButtonsX;
+                case "Play":
+                    return XboxButtonsY;
+                case "Jump":
+                    return XboxButtonsA;
+            }
+            return null;
+        }
+
+        public Sprite XboxButtonsA;
+
+        public Sprite XboxButtonsY;
+
+        public Sprite XboxButtonsX;
+
+        public Sprite XboxButtonsB;
     }
 }

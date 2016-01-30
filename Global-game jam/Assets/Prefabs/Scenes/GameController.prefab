@@ -31,6 +31,8 @@ MonoBehaviour:
   MacroRegognizerComponent: {fileID: 0}
   BPMRate: 110
   Curr: 0
+  TickIndex: 0
+  PathController: {fileID: 0}
 --- !u!224 &22467810
 RectTransform:
   m_ObjectHideFlags: 1
