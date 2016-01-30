@@ -12,6 +12,7 @@ GameObject:
   - 114: {fileID: 11449054}
   - 58: {fileID: 5858068}
   - 50: {fileID: 5031154}
+  - 114: {fileID: 11477028}
   m_Layer: 8
   m_Name: KeyInstance
   m_TagString: Untagged
@@ -76,6 +77,19 @@ MonoBehaviour:
   Name: 
   Target: {fileID: 0}
   Manager: {fileID: 0}
+--- !u!114 &11477028
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 119630}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d124b238ce0bb5041b70d9e095cf6744, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Effect: 0
+  FactorValue: 2
 --- !u!212 &21260590
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -103,7 +117,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 5117dc2ddcd9a7c4e903a42b68c5e9db, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0}
   m_FlipX: 0
   m_FlipY: 0
 --- !u!1001 &100100000
@@ -132,6 +146,14 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: m_Radius
       value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: FactorValue
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_Color.a
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

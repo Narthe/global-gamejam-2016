@@ -13,11 +13,15 @@ public class KeyManager : MonoBehaviour {
 	private int _score;
 
 	private bool _success;
+	private bool _started;
+	private bool _terminated;
 
 	// Use this for initialization
 	void Start () {
 
+		_terminated = false;
 		_success = false;
+		_started = false;
 
 		_timer = 0;
 		_index = 0;
@@ -32,26 +36,37 @@ public class KeyManager : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		_timer += Time.deltaTime;
+		if(_started){
+			_timer += Time.deltaTime;
 
-		if(_index < Keys.Length){
-			if(_timer > Keys[_index].Time){
-				GameObject keyInstance = (GameObject)Instantiate(Resources.Load("KeyInstance"), transform.position, Quaternion.identity);
-				keyInstance.GetComponent<KeyInstance>().Name = Keys[_index].Name;
-				keyInstance.GetComponent<KeyInstance>().Target = KeyTemoin;
-				keyInstance.GetComponent<KeyInstance>().Manager = this;
-				_index ++;
-			}
-		} else {
-			if(_timer > Keys[_index - 1].Time + 2.0f){
-				if(_score == Keys.Length){
-					_success = true;
-					try { GameObject.Find("PartitionTest").GetComponent<Text>().text = "Partition Test OK"; } catch {}
-				} else {
-					try { GameObject.Find("PartitionTest").GetComponent<Text>().text = "Partition Test KO"; } catch {}
+			if(_index < Keys.Length){
+				if(_timer > Keys[_index].Time){
+					GameObject keyInstance = (GameObject)Instantiate(Resources.Load("KeyInstance"), transform.position, Quaternion.identity);
+					keyInstance.GetComponent<KeyInstance>().Name = Keys[_index].Name;
+					keyInstance.GetComponent<KeyInstance>().Target = KeyTemoin;
+					keyInstance.GetComponent<KeyInstance>().Manager = this;
+					_index ++;
+				}
+			} else {
+				if(_timer > Keys[_index - 1].Time + 2.0f){
+					if(_score == Keys.Length){
+						_success = true;
+						try { GameObject.Find("PartitionResult").GetComponent<Text>().text = "Success :D"; } catch {}
+					} else {
+						try { GameObject.Find("PartitionResult").GetComponent<Text>().text = "Too bad :("; } catch {}
+					}
+					_terminated = true;
 				}
 			}
 		}
+	}
+
+	public bool GetStatus(){
+		return _terminated;
+	}
+
+	public bool GetSuccess(){
+		return _success;
 	}
 
 	public void Scored(){
@@ -61,5 +76,9 @@ public class KeyManager : MonoBehaviour {
 
 	public void Fail(){
 		Instantiate(Resources.Load("KeyFail"), KeyTemoin.position, Quaternion.identity);
+	}
+
+	public void Init(){
+		_started = true;
 	}
 }
