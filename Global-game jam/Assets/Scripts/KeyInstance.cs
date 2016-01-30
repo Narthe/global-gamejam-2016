@@ -36,10 +36,10 @@ public class KeyInstance : MonoBehaviour {
 	void Update () {
 		timer += Time.deltaTime;
 
-		/*
-		if(timer > 2){
+
+		if(timer > 3){
 			Destroy(gameObject);
-		}*/
+		}
 
 		Vector3 newPosition = new Vector3(transform.position.x - (8f * Time.deltaTime), transform.position.y, 0);
 
