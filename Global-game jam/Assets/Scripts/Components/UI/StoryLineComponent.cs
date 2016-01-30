@@ -20,7 +20,8 @@ namespace Assets.Scripts.Components.UI
 
         public void SetCurrentText(string text)
         {
-            _text.text = text;
+            if(!string.IsNullOrEmpty(text))
+                _text.text = text;
         }
     }
 }

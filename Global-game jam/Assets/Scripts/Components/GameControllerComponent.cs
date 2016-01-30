@@ -24,16 +24,18 @@ namespace Assets.Scripts.Components
         void Start ()
         {
             _pathControllerComponent = PathController.GetComponent<PathControllerComponent>();
+            MacroRegognizerComponent.OnMacroOk.AddListener(MacroOk);
 
             Instance = this;
-            MacroRegognizerComponent.InputSequence = _pathControllerComponent.GetCurrentCheckPoint().InputsSequences.ToArray();
-            MacroRegognizerComponent.OnMacroOk.AddListener(MacroOk);
+            UpdateSequence();
         }
 
         public void MacroOk()
         {
             MacroRegognizerComponent.InputSequence = null;
+            StoryLineComponent.SetCurrentText(_pathControllerComponent.GetCurrentCheckPoint().SucessMessage);
             _pathControllerComponent.GotoNextWaypoint(UpdateSequence);
+
         }
 
         // Update is called once per framet
@@ -45,6 +47,7 @@ namespace Assets.Scripts.Components
         void UpdateSequence()
         {
             MacroRegognizerComponent.InputSequence = _pathControllerComponent.GetCurrentCheckPoint().InputsSequences.ToArray();
+            StoryLineComponent.SetCurrentText(_pathControllerComponent.GetCurrentCheckPoint().StartMessage);
         }
 
         private void UpdateMetronome()

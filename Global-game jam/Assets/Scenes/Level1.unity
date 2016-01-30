@@ -132,9 +132,67 @@ Prefab:
       propertyPath: startingTarget
       value: 
       objectReference: {fileID: 998229496}
+    - target: {fileID: 11480262, guid: 098a72ced29ab7c47afe7bf505cd3514, type: 2}
+      propertyPath: MacroRegognizerComponent
+      value: 
+      objectReference: {fileID: 931150515}
+    - target: {fileID: 11407656, guid: 098a72ced29ab7c47afe7bf505cd3514, type: 2}
+      propertyPath: m_speed
+      value: 10
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 098a72ced29ab7c47afe7bf505cd3514, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &390912719
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 390912720}
+  - 114: {fileID: 390912721}
+  m_Layer: 0
+  m_Name: Checkpoint_2
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &390912720
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 390912719}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1.02, y: 2, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 962302579}
+  m_RootOrder: 1
+--- !u!114 &390912721
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 390912719}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fca94351acab8eb4b9a9cf14172e9a88, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  InputsSequences:
+  - Jump
+  StartMessage: While she was walking,she noticed that a dead tree was in the way
+  SucessMessage: "\u2026.but the girl with shamisen didn\u2019t become discouraged
+    and stepped over."
+--- !u!114 &931150515 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 11400870, guid: 098a72ced29ab7c47afe7bf505cd3514,
+    type: 2}
+  m_PrefabInternal: {fileID: 173158446}
+  m_Script: {fileID: 11500000, guid: cd284753c5c50bd4f92848efde582e27, type: 3}
 --- !u!1001 &943182552
 Prefab:
   m_ObjectHideFlags: 0
@@ -174,9 +232,14 @@ Prefab:
       propertyPath: m_RootOrder
       value: 1
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 11467556, guid: 6b1155e6809923f4d892efc4b7e5686b, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 6b1155e6809923f4d892efc4b7e5686b, type: 2}
   m_IsPrefabParent: 0
+--- !u!4 &962302579 stripped
+Transform:
+  m_PrefabParentObject: {fileID: 459432, guid: 098a72ced29ab7c47afe7bf505cd3514, type: 2}
+  m_PrefabInternal: {fileID: 173158446}
 --- !u!1 &998229493 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 140894, guid: 6b1155e6809923f4d892efc4b7e5686b, type: 2}
@@ -185,3 +248,49 @@ GameObject:
 Transform:
   m_PrefabParentObject: {fileID: 487956, guid: 6b1155e6809923f4d892efc4b7e5686b, type: 2}
   m_PrefabInternal: {fileID: 943182552}
+--- !u!1 &1069560064
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 1069560065}
+  - 114: {fileID: 1069560066}
+  m_Layer: 0
+  m_Name: Checkpoint_1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1069560065
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1069560064}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -13.1, y: -3.6999998, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 962302579}
+  m_RootOrder: 0
+--- !u!114 &1069560066
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1069560064}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fca94351acab8eb4b9a9cf14172e9a88, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  InputsSequences:
+  - Walk
+  - Walk
+  - Walk
+  StartMessage: 
+  SucessMessage: The girl with shamisen was walking along a path toward the north
+    altar...

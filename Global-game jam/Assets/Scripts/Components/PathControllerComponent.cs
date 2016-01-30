@@ -58,19 +58,24 @@ namespace Assets.Scripts.Components
         public void RefreshPath()
         {
             ITweenPath.nodes = new List<Vector3>();
+            CheckPointList = new List<GameObject>();
             foreach (Transform t in CheckPointsContainer.transform)
             {
                 ITweenPath.nodes.Add(t.position);
                 CheckPointList.Add(t.gameObject);
             }
             ITweenPath.nodeCount = ITweenPath.nodes.Count;
-            ITweenPath.pathVisible = false;
-            ITweenPath.pathVisible = true;
         }
 
         public CheckPointControllerComponent GetCurrentCheckPoint()
         {
             return CheckPointList[_checkpointIndex].GetComponent<CheckPointControllerComponent>();
+        }
+
+        public void AddCheckPoint()
+        {
+           GameObject g =  GuiHelper.Instanciate(CheckPoint, CheckPointsContainer);
+            g.name = "Checkpoint_" + CheckPointsContainer.transform.childCount;
         }
     }
 }

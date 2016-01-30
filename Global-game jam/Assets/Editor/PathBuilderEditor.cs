@@ -14,5 +14,10 @@ public class PathBuilderEditor : Editor
         {
             myScript.RefreshPath();
         }
+
+        if (GUILayout.Button("AddCheckPoint"))
+        {
+            myScript.AddCheckPoint();
+        }
     }
 }
