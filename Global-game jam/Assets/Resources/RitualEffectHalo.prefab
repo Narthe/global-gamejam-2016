@@ -42,7 +42,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Effect: 1
-  FactorValue: 0.4
+  FactorValue: 0.8
 --- !u!114 &11470010
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -55,7 +55,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Effect: 0
-  FactorValue: 2
+  FactorValue: 10
 --- !u!212 &21210198
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -103,7 +103,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: FactorValue
-      value: 2
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: Effect

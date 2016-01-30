@@ -21,23 +21,26 @@ public class MenuControl : MonoBehaviour {
 	}
 
 	void Update () {
-		if(EventSystem.current.currentSelectedGameObject == null){
-			EventSystem.current.SetSelectedGameObject(EventSystem.current.firstSelectedGameObject);
-		}
 		if(_currentMenu == "credits"){
+			EventSystem.current.SetSelectedGameObject(null);
 			if(Input.GetButtonDown("Cancel")){
-				
+				Instantiate(Resources.Load("MenuCancelSound"));
 				_currentMenu = "main";
-
 			}
 
-		}	
+		} else {
+			if(EventSystem.current.currentSelectedGameObject == null){
+				EventSystem.current.SetSelectedGameObject(EventSystem.current.firstSelectedGameObject);
+			}
+		}
 
 		ShowMenus();
 	}
 
 	public void SetMenu(string menu){
+		Instantiate(Resources.Load("MenuValidateSound"));
 		_currentMenu = menu;
+
 	}
 
 	public void Play(){
@@ -46,7 +49,7 @@ public class MenuControl : MonoBehaviour {
 			SceneManager.LoadScene(1);
 		}
 	}
-
+		
 	void ShowMenus(){
 		if(_currentMenu == "main"){
 			_mainMenu.position = Vector3.Lerp(_mainMenu.position, new Vector3(0, _mainMenuStartPosition.y, _mainMenuStartPosition.z), Time.deltaTime * 8.0f);

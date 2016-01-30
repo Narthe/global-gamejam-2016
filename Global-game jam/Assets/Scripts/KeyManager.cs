@@ -36,7 +36,7 @@ public class KeyManager : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if(_started){
+		if(_started && !_terminated){
 			_timer += Time.deltaTime;
 
 			if(_index < Keys.Length){
@@ -52,8 +52,10 @@ public class KeyManager : MonoBehaviour {
 					if(_score == Keys.Length){
 						_success = true;
 						try { GameObject.Find("PartitionResult").GetComponent<Text>().text = "Success :D"; } catch {}
+						Instantiate(Resources.Load("RitualSuccessSound"));
 					} else {
 						try { GameObject.Find("PartitionResult").GetComponent<Text>().text = "Too bad :("; } catch {}
+						Instantiate(Resources.Load("RitualFailSound"));
 					}
 					_terminated = true;
 				}
@@ -71,11 +73,13 @@ public class KeyManager : MonoBehaviour {
 
 	public void Scored(){
 		Instantiate(Resources.Load("KeySuccess"), KeyTemoin.position, Quaternion.identity);
+		Instantiate(Resources.Load("RitualSuccessKeySound"));
 		_score ++;
 	}
 
 	public void Fail(){
 		Instantiate(Resources.Load("KeyFail"), KeyTemoin.position, Quaternion.identity);
+		Instantiate(Resources.Load("RitualFailKeySound"));
 	}
 
 	public void Init(){
