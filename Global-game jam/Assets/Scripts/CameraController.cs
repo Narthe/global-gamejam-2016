@@ -8,7 +8,7 @@ namespace Assets.Scripts
 
         private Camera _camera;
         public Transform startingTarget;
-        public float delayTracking;
+        public float forceTracking;
 
         float TARGET_WIDTH = 1920f;
         float TARGET_HEIGHT = 1080f;
@@ -43,10 +43,10 @@ namespace Assets.Scripts
 
                 Vector3 newPosition = new Vector3(xPos, yPos, zPos);
 
-                transform.position = Vector3.Lerp(transform.position, newPosition, Time.deltaTime*delayTracking);
+				transform.position = Vector3.Lerp(transform.position, newPosition, Time.deltaTime*forceTracking);
             }
 
-            UpdateCamera();
+            //UpdateCamera();
         }
 
         private void UpdateCamera()
