@@ -47,7 +47,7 @@ public class KeyInstance : MonoBehaviour {
 	}
 
 	void OnTriggerStay2D(Collider2D hit){
-		if(Input.GetKey(KeyCode.UpArrow)){
+		if(Input.GetAxis("Vertical") > 0){
 			if(Name == "up"){
 				Manager.Scored();
 			} else {
@@ -55,7 +55,7 @@ public class KeyInstance : MonoBehaviour {
 			}
 			Destroy(gameObject);
 		}
-		if(Input.GetKey(KeyCode.DownArrow)){
+		if(Input.GetAxis("Vertical") < 0){
 			if(Name == "down"){
 				Manager.Scored();
 			} else {
@@ -63,7 +63,7 @@ public class KeyInstance : MonoBehaviour {
 			}
 			Destroy(gameObject);
 		}
-		if(Input.GetKey(KeyCode.LeftArrow)){
+		if(Input.GetAxis("Horizontal") < 0){
 			if(Name == "left"){
 				Manager.Scored();
 			} else {
@@ -71,7 +71,7 @@ public class KeyInstance : MonoBehaviour {
 			}
 			Destroy(gameObject);
 		}
-		if(Input.GetKey(KeyCode.RightArrow)){
+		if(Input.GetAxis("Horizontal") > 0){
 			if(Name == "right"){
 				Manager.Scored();
 			} else {
