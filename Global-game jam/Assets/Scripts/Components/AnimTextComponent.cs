@@ -32,4 +32,12 @@ public class AnimTextComponent : MonoBehaviour
             yield return new WaitForSeconds(letterPause);
         }
     }
+
+    void Update()
+    {
+        if (textComp.text != message)
+        {
+            Start();
+        }
+    }
 }
