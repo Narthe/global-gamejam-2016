@@ -10,7 +10,8 @@ namespace Assets.Scripts.Components.UI
     public class MetronomeComponent : MonoBehaviour
     {
         public Image Background;
-        public Image Metronome;
+        public RectTransform Container;
+        public RectTransform Metronome;
         private RectTransform _rect;
 
         #region Macro
@@ -62,9 +63,9 @@ namespace Assets.Scripts.Components.UI
 
         private void UpdateMetro()
         {
-            AcceptanceAreaImage.rectTransform.offsetMin = new Vector2((Background.rectTransform.rect.width / 2f) - ((AcceptanceArea * 1920f) / 2f), 0);
-            AcceptanceAreaImage.rectTransform.offsetMax = new Vector2((Background.rectTransform.rect.width / 2f) + ((AcceptanceArea * 1920f) / 2f), 50);
-            Metronome.fillAmount = GameControllerComponent.Instance.Curr;
+            AcceptanceAreaImage.rectTransform.offsetMin = new Vector2((Container.rect.width / 2f) - ((AcceptanceArea * 1920f) / 2f), 50);
+            AcceptanceAreaImage.rectTransform.offsetMax = new Vector2((Container.rect.width / 2f) + ((AcceptanceArea * 1920f) / 2f), 150);
+            Metronome.localPosition = new Vector3(Mathf.Lerp(-990-559, 990+559, GameControllerComponent.Instance.Curr), Metronome.localPosition.y);
         }
 
         void CheckMacro()
