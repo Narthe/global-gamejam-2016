@@ -18,7 +18,7 @@ public class Smoke : MonoBehaviour {
 		float startX = Random.Range(0, Camera.main.pixelWidth);
 		float startY = -150;
 
-		position = Camera.main.ScreenToWorldPoint(new Vector3(startX, startY, 0));
+		position = Camera.main.ScreenToWorldPoint(new Vector3(startX, startY, 20));
 		transform.position = position;
 
 		speedX = Random.Range(0.1f,1f);

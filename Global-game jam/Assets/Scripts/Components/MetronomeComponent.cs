@@ -13,6 +13,7 @@ namespace Assets.Scripts.Components.UI
         public RectTransform Container;
         public RectTransform Metronome;
         private RectTransform _rect;
+        public GameObject InputDonePrefab;
 
         #region Macro
         public float timeKey = 0f, timeCode = 0f;
@@ -46,6 +47,15 @@ namespace Assets.Scripts.Components.UI
 
         public Sprite XboxButtonsB;
 
+        public Sprite XboxButtonsAFailed;
+
+        public Sprite XboxButtonsYFailed;
+
+        public Sprite XboxButtonsXFailed;
+
+        public Sprite XboxButtonsBFailed;
+
+
         #endregion
 
         // Use this for initialization
@@ -63,6 +73,11 @@ namespace Assets.Scripts.Components.UI
 
         private void UpdateMetro()
         {
+            if (InputSequence == null || !InputSequence.Any())
+                Background.color = Color.white;
+            else
+                Background.color = GetColorFromAction(InputSequence[index]);
+
             AcceptanceAreaImage.rectTransform.offsetMin = new Vector2((Container.rect.width / 2f) - ((AcceptanceArea * 1920f) / 2f), 50);
             AcceptanceAreaImage.rectTransform.offsetMax = new Vector2((Container.rect.width / 2f) + ((AcceptanceArea * 1920f) / 2f), 150);
             Metronome.localPosition = new Vector3(Mathf.Lerp(-990-559, 990+559, GameControllerComponent.Instance.Curr), Metronome.localPosition.y);
@@ -72,22 +87,24 @@ namespace Assets.Scripts.Components.UI
         {
             _curTick = GameControllerComponent.Instance.TickIndex;
 
-            if (InputSequence == null || !InputSequence.Any())
-                Background.color = Color.white;
-            else 
-                Background.color = GetColorFromAction(InputSequence[index]);
-
             if (Mathf.Abs(Input.GetAxis("Vertical")) > 0f && _wasNeutral)
             {
+                if (_lastInputTick == _curTick)
+                    return;
+
                 _wasNeutral = false;
                 _inputOk = CheckInputIsRight();
 
                 if (!_inputOk || (index > 0 && _curTick > _lastInputTick + 1 || _curTick == _lastInputTick))
                 {
+                    OnFailedInput();
+
                     ClearCurrentInput();
                     if(OnMacroFailed != null)
                         OnMacroFailed.Invoke();
                 }
+
+                _lastInputTick = GameControllerComponent.Instance.TickIndex;
 
                 if (_inputOk && GameControllerComponent.Instance.Curr > .5f - AcceptanceArea / 2f && GameControllerComponent.Instance.Curr < .5f + AcceptanceArea)
                 {
@@ -106,18 +123,27 @@ namespace Assets.Scripts.Components.UI
                 }
                 else
                 {
+                    if (InputSequence.Length > 0)
+                        OnFailedInput();
                     ClearCurrentInput(false);
                 }
-                _lastInputTick = GameControllerComponent.Instance.TickIndex;
+                
             }
             else if (index > 0 && _curTick > _lastInputTick + 1)
             {
+                if (InputSequence.Length > 0)
+                    OnFailedInput();
+
                 ClearCurrentInput();
                 if (OnMacroFailed != null)
                     OnMacroFailed.Invoke();
+                
             }
             else if (index == 0 && CurrentInputContainer.transform.childCount > 0 && _curTick > _lastInputTick)
+            {
                 ClearCurrentInput();
+                
+            }
 
             if (Mathf.Abs(Input.GetAxis("Vertical")) <= 0f && !_wasNeutral)
                 _wasNeutral = true;
@@ -149,13 +175,29 @@ namespace Assets.Scripts.Components.UI
             this.index = 0;
         }
 
+        private void OnFailedInput()
+        {
+            InputDoneComponent inputDone =
+                GuiHelper.Instanciate(InputDonePrefab, AcceptanceAreaImage.gameObject)
+                    .GetComponent<InputDoneComponent>();
+
+            inputDone.Image.sprite = GetFailedTextureFromAction(InputSequence[index]);
+
+            inputDone.GetComponent<AudioSource>().enabled = true;
+        }
+
         private void AddCurrentInput()
         {
+            InputDoneComponent inputDone =
+                GuiHelper.Instanciate(InputDonePrefab, AcceptanceAreaImage.gameObject)
+                    .GetComponent<InputDoneComponent>();
+
+            inputDone.Image.sprite = GetTextureFromAction(InputSequence[index]);
+
             InputComponent i = GuiHelper.Instanciate(InputPrefab, CurrentInputContainer).GetComponent<InputComponent>();
             i.Image.sprite = GetTextureFromAction(InputSequence[index]);
             PlayerControllerComponent.Instance.SetState(InputSequence[index]);
             this.index++;
-
         }
 
         private Color GetColorFromAction(CharacterAction action)
@@ -186,6 +228,22 @@ namespace Assets.Scripts.Components.UI
                     return XboxButtonsY;
                 case CharacterAction.Jump:
                     return XboxButtonsA;
+            }
+            return null;
+        }
+
+        private Sprite GetFailedTextureFromAction(CharacterAction action)
+        {
+            switch (action)
+            {
+                case CharacterAction.Walk:
+                    return XboxButtonsBFailed;
+                case CharacterAction.Hit:
+                    return XboxButtonsXFailed;
+                case CharacterAction.Play:
+                    return XboxButtonsYFailed;
+                case CharacterAction.Jump:
+                    return XboxButtonsAFailed;
             }
             return null;
         }

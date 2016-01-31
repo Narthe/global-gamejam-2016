@@ -1,4 +1,5 @@
 ﻿using Assets.Scripts.Components.UI;
+using Assets.Scripts.Helpers;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -18,6 +19,8 @@ namespace Assets.Scripts.Components
         public GameObject PathController;
         private PathControllerComponent _pathControllerComponent;
         public long TickIndex;
+
+        private RitualInstance _miniGame;
 
         public static GameControllerComponent Instance;
 
@@ -49,6 +52,23 @@ namespace Assets.Scripts.Components
         void Update()
         {
             UpdateMetronome();
+            CheckMiniGameState();
+        }
+
+        private void CheckMiniGameState()
+        {
+            if (_miniGame != null)
+            {
+                if (_miniGame.RitualTerminated)
+                {
+                    if (!_miniGame.RitualSuccess)
+                    {
+                        Destroy(_miniGame.gameObject);
+                        _miniGame = GuiHelper.Instanciate(Resources.Load<GameObject>("RitualInstance"), gameObject).GetComponent<RitualInstance>();
+                    }
+                        
+                }
+            }
         }
 
         void UpdateSequence()
@@ -77,8 +97,13 @@ namespace Assets.Scripts.Components
                     MacroRegognizerComponent.OnMacroOk.AddListener(GotoNextCheckpoint);
                     break;
                 case OnSuccess.MusicMiniGame:
-                    //TODO
+                    _miniGame = GuiHelper.Instanciate(Resources.Load<GameObject>("RitualInstance"), gameObject).GetComponent<RitualInstance>();
                     break;
+            }
+
+            if (ch.MusicToPlay != null)
+            {
+                //SoundController.Instance.AddSoundTrack(ch.MusicToPlay);
             }
         }
 

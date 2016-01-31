@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 
 public class AlphaEffect : MonoBehaviour {
 
@@ -10,15 +11,27 @@ public class AlphaEffect : MonoBehaviour {
 
 	private Color _initColor;
 
-	void Start () {	
+    private SpriteRenderer _s;
+    private Image _i;
+
+
+
+    void Start () {	
 		if(Effect){
 			_alphaValue = 1.0f;
 		} else {
 			_alphaValue = 0.0f;
 		}
+        _s = GetComponent<SpriteRenderer>();
+        _i = GetComponent<Image>();
 
-		_initColor = GetComponent<SpriteRenderer>().color;
-	}
+        if (_s != null)
+            _initColor = _s.color;
+
+        if (_i != null)
+            _initColor = _i.color;
+
+    }
 
 	void Update () {
 		//Fade out ?
@@ -36,7 +49,13 @@ public class AlphaEffect : MonoBehaviour {
 			}
 		}
 
-		//Gfx update
-		GetComponent<SpriteRenderer>().color = new Color(_initColor.r,_initColor.g, _initColor.b, _alphaValue);
-	}
+        //Gfx update
+	    
+        if(_s != null)
+            _s.color = new Color(_initColor.r,_initColor.g, _initColor.b, _alphaValue);
+
+        
+        if(_i != null)
+            _i.color = new Color(_initColor.r, _initColor.g, _initColor.b, _alphaValue);
+    }
 }
