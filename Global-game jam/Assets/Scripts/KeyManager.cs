@@ -51,10 +51,8 @@ public class KeyManager : MonoBehaviour {
 				if(_timer > Keys[_index - 1].Time + 2.0f){
 					if(_score == Keys.Length){
 						_success = true;
-						try { GameObject.Find("PartitionResult").GetComponent<Text>().text = "Success :D"; } catch {}
 						Instantiate(Resources.Load("RitualSuccessSound"));
 					} else {
-						try { GameObject.Find("PartitionResult").GetComponent<Text>().text = "Too bad :("; } catch {}
 						Instantiate(Resources.Load("RitualFailSound"));
 					}
 					_terminated = true;
