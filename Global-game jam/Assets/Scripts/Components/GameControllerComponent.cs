@@ -2,6 +2,7 @@
 using Assets.Scripts.Helpers;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.SceneManagement;
 
 namespace Assets.Scripts.Components
 {
@@ -66,8 +67,14 @@ namespace Assets.Scripts.Components
                     if (!_miniGame.RitualSuccess)
                     {
                         Destroy(_miniGame.gameObject);
-						GameObject temp = (GameObject)Instantiate(Resources.Load("RitualInstance"), Vector3.zero, Quaternion.identity);
+                        GameObject temp =
+                            (GameObject)
+                                Instantiate(Resources.Load("RitualInstance"), Vector3.zero, Quaternion.identity);
                         _miniGame = temp.GetComponent<RitualInstance>();
+                    }
+                    else
+                    {
+                        SceneManager.LoadScene(2);
                     }
                         
                 }
