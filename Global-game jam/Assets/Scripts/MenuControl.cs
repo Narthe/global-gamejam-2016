@@ -7,20 +7,30 @@ public class MenuControl : MonoBehaviour {
 
 	public RectTransform _mainMenu;
 	public RectTransform _creditsMenu;
+	public RectTransform _controlsMenu;
 
 	private string _currentMenu;
 	private Vector3 _mainMenuStartPosition;
 	private Vector3 _creditsMenuStartPosition;
+	private Vector3 _controlsMenuStartPosition;
+
+	private float delayInput;
 
 
 	void Start () {
+
+		delayInput = 0;
+
 		_currentMenu = "main";
 
 		_mainMenuStartPosition = _mainMenu.position;
 		_creditsMenuStartPosition = _creditsMenu.position;
+		_controlsMenuStartPosition = _controlsMenu.position;
 	}
 
 	void Update () {
+		delayInput += Time.deltaTime;
+
 		if(_currentMenu == "credits"){
 			EventSystem.current.SetSelectedGameObject(null);
 			if(Input.GetButtonDown("Cancel")){
@@ -28,9 +38,13 @@ public class MenuControl : MonoBehaviour {
 				_currentMenu = "main";
 			}
 
-		} else {
+		} else if(_currentMenu == "main"){
 			if(EventSystem.current.currentSelectedGameObject == null){
 				EventSystem.current.SetSelectedGameObject(EventSystem.current.firstSelectedGameObject);
+			}
+		} else if(_currentMenu == "controls"){
+			if(Input.GetButtonDown("Submit") && delayInput > 1.0f){
+				Play();
 			}
 		}
 
@@ -43,10 +57,18 @@ public class MenuControl : MonoBehaviour {
 
 	}
 
+	public void ShowControls(){
+		if (_currentMenu == "main"){
+			_currentMenu = "controls";
+			delayInput = 0;
+		}
+	}
+
 	public void Play(){
-		if(_currentMenu == "main"){
+		if(_currentMenu == "controls"){
 			//Do stuff
-			SceneManager.LoadScene(1);
+			_currentMenu = "GO";
+			//SceneManager.LoadScene(1);
 		}
 	}
 		
@@ -61,6 +83,12 @@ public class MenuControl : MonoBehaviour {
 			_creditsMenu.position = Vector3.Lerp(_creditsMenu.position, new Vector3(0, _creditsMenuStartPosition.y, _creditsMenuStartPosition.z), Time.deltaTime * 8.0f);
 		} else {
 			_creditsMenu.position = Vector3.Lerp(_creditsMenu.position, new Vector3(_creditsMenuStartPosition.x, _creditsMenuStartPosition.y, _creditsMenuStartPosition.z), Time.deltaTime * 8.0f);
+		}
+
+		if(_currentMenu == "controls"){
+			_controlsMenu.position = Vector3.Lerp(_controlsMenu.position, new Vector3(0, _controlsMenuStartPosition.y, _controlsMenuStartPosition.z), Time.deltaTime * 8.0f);
+		} else {
+			_controlsMenu.position = Vector3.Lerp(_controlsMenu.position, new Vector3(_controlsMenuStartPosition.x, _controlsMenuStartPosition.y, _controlsMenuStartPosition.z), Time.deltaTime * 8.0f);
 		}
 	}
 
