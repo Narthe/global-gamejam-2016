@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using Assets.Scripts.Helpers;
 using UnityEngine;
 
@@ -38,6 +39,15 @@ namespace Assets.Scripts.Components
                 iTween.MoveTo(Target, iTween.Hash("position", ITweenPath.nodes[_checkpointIndex], "speed", m_speed,
                                                       "easetype", iTween.EaseType.linear, "oncompletetarget", gameObject,
                                                       "oncomplete", "Done"));
+
+                if (Target.transform.position.x > ITweenPath.nodes[_checkpointIndex].x)
+                {
+                    Target.transform.eulerAngles = new Vector3(0, 0, 0);
+                }
+                else
+                {
+                    Target.transform.eulerAngles = new Vector3(0, 190, 0);
+                }
 
                 _gotoNextFallBack = onDone;
             }

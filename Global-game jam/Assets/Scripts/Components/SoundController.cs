@@ -72,10 +72,10 @@ namespace Assets.Scripts.Components
 
             if (_currentPlayingList.Any())
             {
-                source.time = _currentPlayingList.FirstOrDefault().time;
+                StartCoroutine(PlayOnTimeWith(source, _currentPlayingList.FirstOrDefault()));
             }
-
-            source.Play();
+            else
+                StartCoroutine(PlayOnTime(source));
 
             _currentPlayingList.Add(source);
         }
@@ -83,6 +83,36 @@ namespace Assets.Scripts.Components
         public void ClearStack()
         {
             gameObject.ClearChilds();
+        }
+
+        public IEnumerator PlayOnTime(AudioSource source)
+        {
+            while (source.clip.loadState != AudioDataLoadState.Loaded)
+                yield return null;
+
+            float curr = GameControllerComponent.Instance.Curr;
+            long currTick = GameControllerComponent.Instance.TickIndex;
+
+            if (curr > .5f)
+            {
+                while (GameControllerComponent.Instance.TickIndex < currTick++)
+                    yield return null;
+            }
+
+            while (GameControllerComponent.Instance.Curr < .5f)
+                yield return null;
+
+            source.Play();
+        }
+        public IEnumerator PlayOnTimeWith(AudioSource source, AudioSource with)
+        {
+            while (source.clip.loadState != AudioDataLoadState.Loaded)
+                yield return null;
+
+            source.time = with.time;
+            source.Play();
+
+            source.Play();
         }
 
     }

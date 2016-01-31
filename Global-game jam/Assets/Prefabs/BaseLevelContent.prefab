@@ -778,7 +778,7 @@ MonoBehaviour:
   AcceptanceArea: 0.3
   OnFailure: 1
   OnSucess: 0
-  MusicToPlay: {fileID: 0}
+  MusicToPlay: {fileID: 8300000, guid: db863eb367e88044d961479c6aab519c, type: 3}
 --- !u!114 &11407656
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -906,7 +906,7 @@ MonoBehaviour:
   AcceptanceArea: 0.3
   OnFailure: 1
   OnSucess: 0
-  MusicToPlay: {fileID: 8300000, guid: 70855fd58cb4bc74ea7a3f2fa35a53b4, type: 3}
+  MusicToPlay: {fileID: 8300000, guid: 65c9d937ae1046e43b1d42e2bfbd4ba9, type: 3}
 --- !u!114 &11438968
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1017,7 +1017,7 @@ MonoBehaviour:
   AcceptanceArea: 0.3
   OnFailure: 0
   OnSucess: 0
-  MusicToPlay: {fileID: 8300000, guid: 65c9d937ae1046e43b1d42e2bfbd4ba9, type: 3}
+  MusicToPlay: {fileID: 8300000, guid: d76fc98ce8e763346baf17399ef5ba3d, type: 3}
 --- !u!114 &11458120
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1207,7 +1207,7 @@ MonoBehaviour:
   AcceptanceArea: 0.3
   OnFailure: 1
   OnSucess: 0
-  MusicToPlay: {fileID: 0}
+  MusicToPlay: {fileID: 8300000, guid: 2c79b506b3ffbf549b66a0901c3ea507, type: 3}
 --- !u!114 &11472192
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1226,7 +1226,7 @@ MonoBehaviour:
   AcceptanceArea: 0.3
   OnFailure: 1
   OnSucess: 0
-  MusicToPlay: {fileID: 0}
+  MusicToPlay: {fileID: 8300000, guid: 2a23cfb2ae8bbec469cd4b8b0d58303b, type: 3}
 --- !u!114 &11479248
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1247,7 +1247,7 @@ MonoBehaviour:
   AcceptanceArea: 0.3
   OnFailure: 0
   OnSucess: 1
-  MusicToPlay: {fileID: 0}
+  MusicToPlay: {fileID: 8300000, guid: b142690d5eb87ca46aba9fb2cd29c67a, type: 3}
 --- !u!114 &11480262
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1310,7 +1310,7 @@ MonoBehaviour:
   AcceptanceArea: 0.3
   OnFailure: 0
   OnSucess: 0
-  MusicToPlay: {fileID: 0}
+  MusicToPlay: {fileID: 8300000, guid: 70855fd58cb4bc74ea7a3f2fa35a53b4, type: 3}
 --- !u!114 &11494730
 MonoBehaviour:
   m_ObjectHideFlags: 1

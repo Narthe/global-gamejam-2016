@@ -100,10 +100,16 @@ namespace Assets.Scripts.Components
                     MacroRegognizerComponent.OnMacroOk.AddListener(GotoNextCheckpoint);
                     break;
                 case OnSuccess.MusicMiniGame:
-					GameObject.Find("UI").SetActive(false);
-					GameObject temp = (GameObject)Instantiate(Resources.Load("RitualInstance"), Vector3.zero, Quaternion.identity);
-					_miniGame = temp.GetComponent<RitualInstance>();
-                    PlayerControllerComponent.Instance.SetState(CharacterAction.Play);
+
+                    MacroRegognizerComponent.OnMacroOk = new UnityEvent();
+                    MacroRegognizerComponent.OnMacroOk.AddListener(delegate
+                    {
+                        GameObject.Find("UI").SetActive(false);
+                        GameObject temp = (GameObject)Instantiate(Resources.Load("RitualInstance"), Vector3.zero, Quaternion.identity);
+                        _miniGame = temp.GetComponent<RitualInstance>();
+                        PlayerControllerComponent.Instance.SetState(CharacterAction.Play);
+                    });
+                    
                     break;
             }
 
