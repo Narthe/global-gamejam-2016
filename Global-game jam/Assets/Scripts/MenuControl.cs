@@ -43,6 +43,7 @@ public class MenuControl : MonoBehaviour {
 				EventSystem.current.SetSelectedGameObject(EventSystem.current.firstSelectedGameObject);
 			}
 		} else if(_currentMenu == "controls"){
+			EventSystem.current.SetSelectedGameObject(null);		
 			if(Input.GetButtonDown("Submit") && delayInput > 1.0f){
 				Play();
 			}
