@@ -1157,7 +1157,7 @@ Transform:
   - {fileID: 266131318}
   - {fileID: 1004480827}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 2
 --- !u!1 &91135916
 GameObject:
   m_ObjectHideFlags: 0
@@ -1613,10 +1613,34 @@ Transform:
 Transform:
   m_PrefabParentObject: {fileID: 498942, guid: deb98c8351bdc044bafec0f0e3eee64f, type: 2}
   m_PrefabInternal: {fileID: 1168928087}
---- !u!1 &156450812 stripped
+--- !u!1 &156450812
 GameObject:
+  m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 166144, guid: 92dbf65760426f446a4db38c06c7479b, type: 2}
-  m_PrefabInternal: {fileID: 231347862}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 156450813}
+  - 114: {fileID: 156450814}
+  m_Layer: 0
+  m_Name: 
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &156450813
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 156450812}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
 --- !u!114 &156450814
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3842,7 +3866,7 @@ Transform:
   - {fileID: 53869562}
   - {fileID: 1009968206}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
 --- !u!1001 &503438108
 Prefab:
   m_ObjectHideFlags: 0
@@ -5451,6 +5475,24 @@ Prefab:
 Transform:
   m_PrefabParentObject: {fileID: 413074, guid: 713152fcad6587a4c97adccd1b638784, type: 2}
   m_PrefabInternal: {fileID: 711436716}
+--- !u!1 &724785989 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 130316, guid: 098a72ced29ab7c47afe7bf505cd3514, type: 2}
+  m_PrefabInternal: {fileID: 1448382310}
+--- !u!114 &724785990
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 724785989}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 796e402f62f28184e9d3180a789d3ee8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  letterPause: 0.2
+  typeSound1: {fileID: 0}
+  typeSound2: {fileID: 0}
 --- !u!1001 &740629321
 Prefab:
   m_ObjectHideFlags: 0
@@ -5805,7 +5847,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
 --- !u!1001 &784446537
 Prefab:
   m_ObjectHideFlags: 0
@@ -15114,7 +15156,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 6
 --- !u!1001 &1959812195
 Prefab:
   m_ObjectHideFlags: 0
