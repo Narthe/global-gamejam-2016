@@ -59,7 +59,8 @@ namespace Assets.Scripts.Components
 
         public CheckPointControllerComponent GetCurrentCheckPoint()
         {
-            if(CheckPointList!=null && CheckPointList.Any() )
+			RefreshPath();
+			if(CheckPointList!=null && CheckPointList.Any())
                 return CheckPointList[_checkpointIndex].GetComponent<CheckPointControllerComponent>();
 
             return null;
