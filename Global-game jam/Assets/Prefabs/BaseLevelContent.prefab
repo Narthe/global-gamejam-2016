@@ -1265,6 +1265,7 @@ MonoBehaviour:
   Curr: 0
   PathController: {fileID: 146308}
   TickIndex: 0
+  MinigameAudioClip: {fileID: 8300000, guid: f3e221836e346304babf967d036963f2, type: 3}
 --- !u!114 &11487896
 MonoBehaviour:
   m_ObjectHideFlags: 1

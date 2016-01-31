@@ -80,9 +80,14 @@ namespace Assets.Scripts.Components
             _currentPlayingList.Add(source);
         }
 
-        public void ClearStack()
+        public void ClearStacks()
         {
             gameObject.ClearChilds();
+            _walkClips = new List<AudioSource>();
+            _battleClips = new List<AudioSource>();
+            _playClips = new List<AudioSource>();
+            _currentPlayingList = new List<AudioSource>();
+            _nextPlaying = new List<AudioSource>();
         }
 
         public IEnumerator PlayOnTime(AudioSource source)

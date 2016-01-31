@@ -23,6 +23,7 @@ namespace Assets.Scripts.Components
         private RitualInstance _miniGame;
 
         public static GameControllerComponent Instance;
+        public AudioClip MinigameAudioClip;
 
         // Use this for initialization
         void Start()
@@ -104,6 +105,8 @@ namespace Assets.Scripts.Components
                     MacroRegognizerComponent.OnMacroOk = new UnityEvent();
                     MacroRegognizerComponent.OnMacroOk.AddListener(delegate
                     {
+                        SoundController.Instance.ClearStacks();
+                        SoundController.Instance.AddAudioClip(MinigameAudioClip,CharacterAction.Play);
                         GameObject.Find("UI").SetActive(false);
                         GameObject temp = (GameObject)Instantiate(Resources.Load("RitualInstance"), Vector3.zero, Quaternion.identity);
                         _miniGame = temp.GetComponent<RitualInstance>();
