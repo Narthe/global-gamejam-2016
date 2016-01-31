@@ -654,9 +654,11 @@ MonoBehaviour:
 
     - Julien
 
+    - Kevin
+
     - Laurent
 
-    - Kevin
+    - Loic
 
 
     Hello World from France :D
@@ -884,6 +886,47 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 982778486}
+--- !u!1 &1148308417
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 1148308419}
+  - 114: {fileID: 1148308418}
+  m_Layer: 0
+  m_Name: SmokeGenerator
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1148308418
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1148308417}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 48cf117393bdc8c4fb95a62c36c9c4f3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  minIntervalTime: 0.1
+  maxIntervalTime: 0.2
+--- !u!4 &1148308419
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1148308417}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -1.2039865, y: -1.9102888, z: 10}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 4
 --- !u!1 &1190142023
 GameObject:
   m_ObjectHideFlags: 0
