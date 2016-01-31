@@ -103,7 +103,7 @@ namespace Assets.Scripts.Components
 
             if (ch.MusicToPlay != null)
             {
-                //SoundController.Instance.AddSoundTrack(ch.MusicToPlay);
+                SoundController.Instance.AddAudioClip(ch.MusicToPlay, ch.InputsSequences[0]);
             }
         }
 
