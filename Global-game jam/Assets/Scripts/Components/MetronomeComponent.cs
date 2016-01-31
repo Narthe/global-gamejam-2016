@@ -170,8 +170,6 @@ namespace Assets.Scripts.Components.UI
         private void ClearCurrentInput(bool refreshState = true)
         {
             CurrentInputContainer.ClearChilds();
-            if(refreshState)
-                PlayerControllerComponent.Instance.SetState(CharacterAction.Idle);
             this.index = 0;
         }
 
