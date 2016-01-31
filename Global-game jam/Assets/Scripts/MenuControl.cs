@@ -69,6 +69,8 @@ public class MenuControl : MonoBehaviour {
 		if(_currentMenu == "controls"){
 			//Do stuff
 			_currentMenu = "GO";
+			Destroy(GameObject.Find("SmokeGenerator"));
+			Destroy(GameObject.Find("GameTitle"));
 			//SceneManager.LoadScene(1);
 		}
 	}
