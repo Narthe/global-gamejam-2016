@@ -12,7 +12,6 @@ public class RitualInstance : MonoBehaviour {
 	public GameObject BackPartition;
 	public GameObject BackPartition2;
 	public GameObject KeyManager;
-	public GameObject PartitionResult;
 
 	private float _alphaValue;
 	private int _status; //0 = starting, 1 = started, 2 = terminating, 3 = terminator LOELELEOEPKZAELKQSMDK
@@ -33,10 +32,13 @@ public class RitualInstance : MonoBehaviour {
 		_delayTerminating = 0;
 
 		UpdateAlpha();
+
 	}
 	
 	// Update is called once per frame
 	void Update () {
+		transform.position = new Vector3(GameObject.Find("Main Camera").transform.position.x, GameObject.Find("Main Camera").transform.position.y, -5);
+
 		if(_status == 0){
 			if(_alphaValue < 1){
 				_alphaValue += Time.deltaTime * 1.1f;
@@ -82,10 +84,6 @@ public class RitualInstance : MonoBehaviour {
 
 		tempColor = RitualBack.GetComponent<SpriteRenderer>().color;
 		RitualBack.GetComponent<SpriteRenderer>().color = new Color(tempColor.r, tempColor.g, tempColor.b, _alphaValue);
-
-		tempColor = PartitionResult.GetComponent<Text>().color;
-		PartitionResult.GetComponent<Text>().color = new Color(tempColor.r, tempColor.g, tempColor.b, _alphaValue);
-
 
 		if(_alphaValue < 0.5f){
 			tempColor = BackPartition.GetComponent<SpriteRenderer>().color;

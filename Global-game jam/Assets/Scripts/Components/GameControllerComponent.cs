@@ -64,7 +64,8 @@ namespace Assets.Scripts.Components
                     if (!_miniGame.RitualSuccess)
                     {
                         Destroy(_miniGame.gameObject);
-                        _miniGame = GuiHelper.Instanciate(Resources.Load<GameObject>("RitualInstance"), gameObject).GetComponent<RitualInstance>();
+						GameObject temp = (GameObject)Instantiate(Resources.Load("RitualInstance"), Vector3.zero, Quaternion.identity);
+                        _miniGame = temp.GetComponent<RitualInstance>();
                     }
                         
                 }
@@ -97,7 +98,9 @@ namespace Assets.Scripts.Components
                     MacroRegognizerComponent.OnMacroOk.AddListener(GotoNextCheckpoint);
                     break;
                 case OnSuccess.MusicMiniGame:
-                    _miniGame = GuiHelper.Instanciate(Resources.Load<GameObject>("RitualInstance"), gameObject).GetComponent<RitualInstance>();
+					GameObject.Find("UI").SetActive(false);
+					GameObject temp = (GameObject)Instantiate(Resources.Load("RitualInstance"), Vector3.zero, Quaternion.identity);
+					_miniGame = temp.GetComponent<RitualInstance>();
                     break;
             }
 
