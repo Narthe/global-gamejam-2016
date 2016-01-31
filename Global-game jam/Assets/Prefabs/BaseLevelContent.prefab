@@ -76,7 +76,7 @@ GameObject:
   - 4: {fileID: 481756}
   - 114: {fileID: 11479248}
   m_Layer: 0
-  m_Name: Checkpoint_6
+  m_Name: Checkpoint_6 (1)
   m_TagString: Untagged
   m_Icon: {fileID: -1089502233064743932, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -351,6 +351,22 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &173964
+GameObject:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 476200}
+  - 114: {fileID: 11460850}
+  m_Layer: 0
+  m_Name: Checkpoint_6
+  m_TagString: Untagged
+  m_Icon: {fileID: -1089502233064743932, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &183656
 GameObject:
   m_ObjectHideFlags: 1
@@ -481,7 +497,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 189220}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3.36, y: 5.92, z: 0}
+  m_LocalPosition: {x: -2.55, y: 3.67, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 459432}
@@ -505,7 +521,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 114172}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 4.45, y: -0.32, z: 0}
+  m_LocalPosition: {x: 4.94, y: -0.55, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 459432}
@@ -517,7 +533,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 192654}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -6.86, y: 9.25, z: 0}
+  m_LocalPosition: {x: -4.66, y: 6.06, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 459432}
@@ -596,6 +612,7 @@ Transform:
   - {fileID: 401658}
   - {fileID: 411072}
   - {fileID: 431186}
+  - {fileID: 476200}
   - {fileID: 481756}
   m_Father: {fileID: 499960}
   m_RootOrder: 0
@@ -635,6 +652,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 459432}
   m_RootOrder: 3
+--- !u!4 &476200
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 173964}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -7.08, y: 9.01, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 459432}
+  m_RootOrder: 11
 --- !u!4 &481756
 Transform:
   m_ObjectHideFlags: 1
@@ -642,11 +671,11 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 115784}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.87, y: 10.93, z: 0}
+  m_LocalPosition: {x: -1.69, y: 10.9, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 459432}
-  m_RootOrder: 11
+  m_RootOrder: 12
 --- !u!4 &493442
 Transform:
   m_ObjectHideFlags: 1
@@ -792,12 +821,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CheckPoint: {fileID: 166252, guid: 513dbf2f1bb84434ba3e1241bb6778b5, type: 2}
   CheckPointList:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 128540}
+  - {fileID: 120982}
+  - {fileID: 158706}
+  - {fileID: 195206}
+  - {fileID: 105914}
+  - {fileID: 195922}
+  - {fileID: 151706}
+  - {fileID: 114172}
+  - {fileID: 146752}
+  - {fileID: 189220}
+  - {fileID: 192654}
+  - {fileID: 173964}
+  - {fileID: 115784}
   CheckPointsContainer: {fileID: 158730}
   m_speed: 2
   ITweenPath: {fileID: 11494730}
@@ -1037,6 +1073,27 @@ MonoBehaviour:
   OnFailure: 0
   OnSucess: 0
   MusicToPlay: {fileID: 8300000, guid: 05f186e8d4cf9ec41a312e90f0303b10, type: 3}
+--- !u!114 &11460850
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 173964}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fca94351acab8eb4b9a9cf14172e9a88, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  InputsSequences: 020000000200000002000000020000000200000002000000
+  StartMessage: "The girl with shamisen arrived at north altar\u2019s gates and began
+    playing her instrument."
+  SucessMessage: The doors opened while she was playing, and the girl went to the
+    altar.
+  BPM: 70
+  AcceptanceArea: 0.3
+  OnFailure: 0
+  OnSucess: 0
+  MusicToPlay: {fileID: 8300000, guid: b142690d5eb87ca46aba9fb2cd29c67a, type: 3}
 --- !u!114 &11461080
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1238,7 +1295,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fca94351acab8eb4b9a9cf14172e9a88, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  InputsSequences: 020000000200000002000000020000000200000002000000
+  InputsSequences: 00000000
   StartMessage: "The girl with shamisen arrived at north altar\u2019s gates and began
     playing her instrument."
   SucessMessage: The doors opened while she was playing, and the girl went to the
@@ -1246,8 +1303,8 @@ MonoBehaviour:
   BPM: 70
   AcceptanceArea: 0.3
   OnFailure: 0
-  OnSucess: 1
-  MusicToPlay: {fileID: 8300000, guid: b142690d5eb87ca46aba9fb2cd29c67a, type: 3}
+  OnSucess: 0
+  MusicToPlay: {fileID: 8300000, guid: d76fc98ce8e763346baf17399ef5ba3d, type: 3}
 --- !u!114 &11480262
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1326,13 +1383,20 @@ MonoBehaviour:
   pathName: Path
   pathColor: {r: 0, g: 1, b: 1, a: 1}
   nodes:
-  - {x: -26.2, y: -6.5699997, z: 0}
-  - {x: -15.5, y: -0.5699997, z: 0}
-  - {x: -11.6, y: -10.87, z: 0}
-  - {x: -4.9000006, y: -6.5699997, z: 0}
-  - {x: 1, y: 2.83, z: 0}
-  - {x: 4.299999, y: -9.27, z: 0}
-  nodeCount: 6
+  - {x: -14.37, y: -1.45, z: 0}
+  - {x: -9.11, y: -2.34, z: 0}
+  - {x: -4.24, y: -3.74, z: 0}
+  - {x: -1.36, y: -3.73, z: 0}
+  - {x: 0.22, y: -3.78, z: 0}
+  - {x: 1.53, y: -3.36, z: 0}
+  - {x: 3.52, y: -2.17, z: 0}
+  - {x: 4.94, y: -0.55, z: 0}
+  - {x: 2.67, y: 1.76, z: 0}
+  - {x: -2.55, y: 3.67, z: 0}
+  - {x: -4.66, y: 6.06, z: 0}
+  - {x: -6.567343, y: 9.01, z: 0}
+  - {x: -1.69, y: 11.76154, z: 0}
+  nodeCount: 13
   initialized: 1
   initialName: New Path 2
   pathVisible: 1
