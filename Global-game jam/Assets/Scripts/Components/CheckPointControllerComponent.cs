@@ -12,6 +12,7 @@ namespace Assets.Scripts.Components
         public float AcceptanceArea = .3f;
         public OnFailure OnFailure;
         public OnSuccess OnSucess;
+        public AudioClip MusicToPlay;
 
         void Start ()
         {
