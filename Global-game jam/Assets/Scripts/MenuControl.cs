@@ -14,12 +14,12 @@ public class MenuControl : MonoBehaviour {
 	private Vector3 _creditsMenuStartPosition;
 	private Vector3 _controlsMenuStartPosition;
 
-	private float delayInput;
+	private float _delayInput;
 
 
 	void Start () {
 
-		delayInput = 0;
+		_delayInput = 0;
 
 		_currentMenu = "main";
 
@@ -29,7 +29,7 @@ public class MenuControl : MonoBehaviour {
 	}
 
 	void Update () {
-		delayInput += Time.deltaTime;
+		_delayInput += Time.deltaTime;
 
 		if(_currentMenu == "credits"){
 			EventSystem.current.SetSelectedGameObject(null);
@@ -44,8 +44,12 @@ public class MenuControl : MonoBehaviour {
 			}
 		} else if(_currentMenu == "controls"){
 			EventSystem.current.SetSelectedGameObject(null);		
-			if(Input.GetButtonDown("Submit") && delayInput > 1.0f){
+			if(Input.GetButtonDown("Submit") && _delayInput > 1.0f){
 				Play();
+			}
+		} else if(_currentMenu == "GO"){
+			if(_delayInput > 3){
+				SceneManager.LoadScene(1);
 			}
 		}
 
@@ -61,7 +65,7 @@ public class MenuControl : MonoBehaviour {
 	public void ShowControls(){
 		if (_currentMenu == "main"){
 			_currentMenu = "controls";
-			delayInput = 0;
+			_delayInput = 0;
 		}
 	}
 
@@ -71,7 +75,7 @@ public class MenuControl : MonoBehaviour {
 			_currentMenu = "GO";
 			Destroy(GameObject.Find("SmokeGenerator"));
 			Destroy(GameObject.Find("GameTitle"));
-			//SceneManager.LoadScene(1);
+			_delayInput = 0;
 		}
 	}
 		
