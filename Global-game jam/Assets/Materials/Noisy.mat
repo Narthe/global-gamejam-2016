@@ -51,19 +51,19 @@ Material:
       data:
         first:
           name: time
-        second: 125.70597
+        second: 13.096405
       data:
         first:
           name: baseSpeed
-        second: 0.26
+        second: 0.1
       data:
         first:
           name: noiseScale
-        second: 0.11
+        second: 0.1
       data:
         first:
           name: decalU
-        second: 10
+        second: 1
       data:
         first:
           name: decalV
