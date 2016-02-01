@@ -1,4 +1,6 @@
-﻿using Assets.Scripts.Components.UI;
+﻿using System.Collections;
+using System.Collections.Generic;
+using Assets.Scripts.Components.UI;
 using Assets.Scripts.Helpers;
 using UnityEngine;
 using UnityEngine.Events;
@@ -25,12 +27,15 @@ namespace Assets.Scripts.Components
 
         public static GameControllerComponent Instance;
         public AudioClip MinigameAudioClip;
+        private float _ajusted;
 
         // Use this for initialization
-        void Start()
+        IEnumerator Start()
         {
             _pathControllerComponent = PathController.GetComponent<PathControllerComponent>();
             Instance = this;
+            yield return null;
+            yield return null;
             UpdateSequence();
         }
 
@@ -54,8 +59,12 @@ namespace Assets.Scripts.Components
         // Update is called once per framet
         void Update()
         {
-            UpdateMetronome();
             CheckMiniGameState();
+        }
+
+        void FixedUpdate()
+        {
+            UpdateMetronome();
         }
 
         private void CheckMiniGameState()
@@ -131,8 +140,9 @@ namespace Assets.Scripts.Components
 
         private void UpdateMetronome()
         {
-            _rateInSec = (BPMRate / 60);
-            Curr = Time.time % _rateInSec / _rateInSec;
+            _rateInSec = (float) (60f/BPMRate);
+            _ajusted = (Time.time%_rateInSec);
+            Curr = (_ajusted / _rateInSec);
             TickIndex = (long)(Time.time / _rateInSec);
         }
     }
