@@ -10881,6 +10881,62 @@ Prefab:
       propertyPath: OnSucess
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 11439556, guid: 098a72ced29ab7c47afe7bf505cd3514, type: 2}
+      propertyPath: BPM
+      value: 70
+      objectReference: {fileID: 0}
+    - target: {fileID: 11468700, guid: 098a72ced29ab7c47afe7bf505cd3514, type: 2}
+      propertyPath: BPM
+      value: 70
+      objectReference: {fileID: 0}
+    - target: {fileID: 11436096, guid: 098a72ced29ab7c47afe7bf505cd3514, type: 2}
+      propertyPath: BPM
+      value: 70
+      objectReference: {fileID: 0}
+    - target: {fileID: 11493390, guid: 098a72ced29ab7c47afe7bf505cd3514, type: 2}
+      propertyPath: BPM
+      value: 70
+      objectReference: {fileID: 0}
+    - target: {fileID: 11460850, guid: 098a72ced29ab7c47afe7bf505cd3514, type: 2}
+      propertyPath: BPM
+      value: 70
+      objectReference: {fileID: 0}
+    - target: {fileID: 11470852, guid: 098a72ced29ab7c47afe7bf505cd3514, type: 2}
+      propertyPath: BPM
+      value: 70
+      objectReference: {fileID: 0}
+    - target: {fileID: 11456932, guid: 098a72ced29ab7c47afe7bf505cd3514, type: 2}
+      propertyPath: BPM
+      value: 70
+      objectReference: {fileID: 0}
+    - target: {fileID: 11467370, guid: 098a72ced29ab7c47afe7bf505cd3514, type: 2}
+      propertyPath: BPM
+      value: 70
+      objectReference: {fileID: 0}
+    - target: {fileID: 11458120, guid: 098a72ced29ab7c47afe7bf505cd3514, type: 2}
+      propertyPath: BPM
+      value: 70
+      objectReference: {fileID: 0}
+    - target: {fileID: 11438968, guid: 098a72ced29ab7c47afe7bf505cd3514, type: 2}
+      propertyPath: BPM
+      value: 70
+      objectReference: {fileID: 0}
+    - target: {fileID: 11472192, guid: 098a72ced29ab7c47afe7bf505cd3514, type: 2}
+      propertyPath: BPM
+      value: 70
+      objectReference: {fileID: 0}
+    - target: {fileID: 11404102, guid: 098a72ced29ab7c47afe7bf505cd3514, type: 2}
+      propertyPath: BPM
+      value: 70
+      objectReference: {fileID: 0}
+    - target: {fileID: 11479248, guid: 098a72ced29ab7c47afe7bf505cd3514, type: 2}
+      propertyPath: BPM
+      value: 70
+      objectReference: {fileID: 0}
+    - target: {fileID: 11470852, guid: 098a72ced29ab7c47afe7bf505cd3514, type: 2}
+      propertyPath: AcceptanceArea
+      value: 0.1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 098a72ced29ab7c47afe7bf505cd3514, type: 2}
   m_IsPrefabParent: 0
